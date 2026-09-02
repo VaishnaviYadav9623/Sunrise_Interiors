@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Sunrise Interior Studio</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+
+        .admin-dashboard {
+            padding: 40px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-header h1 {
+            margin: 0;
+        }
+
+        .logout-btn {
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .dashboard-card {
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .dashboard-card h2 {
+            font-size: 32px;
+            margin: 10px 0;
+        }
+
+        .dashboard-card p {
+            margin: 0;
+        }
+
+        #dashboardMessage {
+            margin-bottom: 20px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <section class="admin-dashboard">
+
+
+        <div class="dashboard-header">
+
+            <div>
+                <h1>Admin Dashboard</h1>
+
+                <p id="welcomeMessage">
+                    Welcome, Admin
+                </p>
+            </div>
+
+
+            <button
+                class="logout-btn"
+                id="logoutBtn"
+            >
+                Logout
+            </button>
+
+        </div>
+
+
+        <p id="dashboardMessage">
+            Loading dashboard...
+        </p>
+
+
+        <div class="dashboard-cards">
+
+
+            <div class="dashboard-card">
+
+                <h2 id="productsCount">0</h2>
+
+                <p>Products</p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h2 id="projectsCount">0</h2>
+
+                <p>Projects</p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h2 id="consultationsCount">0</h2>
+
+                <p>Consultations</p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h2 id="quotesCount">0</h2>
+
+                <p>Quotes</p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h2 id="contactsCount">0</h2>
+
+                <p>Contacts</p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h2 id="pendingConsultationsCount">0</h2>
+
+                <p>Pending Consultations</p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h2 id="pendingQuotesCount">0</h2>
+
+                <p>Pending Quotes</p>
+
+            </div>
+
+
+            <div class="dashboard-card">
+
+                <h2 id="unreadContactsCount">0</h2>
+
+                <p>Unread Contacts</p>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+    <script>
+
+        const API_URL = "http://localhost:5000";
+
+
+        // Check if admin is logged in
+        const token = localStorage.getItem("adminToken");
+
+        const adminData =
+            localStorage.getItem("admin");
+
+
+        if (!token) {
+
+            window.location.href =
+                "../admin-login.html";
+
+        }
+
+
+        // Display admin name
+        if (adminData) {
+
+            const admin =
+                JSON.parse(adminData);
+
+            document.getElementById(
+                "welcomeMessage"
+            ).innerText =
+                "Welcome, " + admin.name;
+
+        }
+
+
+        // Load dashboard statistics
+        async function loadDashboard() {
+
+            const message =
+                document.getElementById(
+                    "dashboardMessage"
+                );
+
+            try {
+
+                const response =
+                    await fetch(
+                        `${API_URL}/api/dashboard/stats`,
+                        {
+                            method: "GET",
+
+                            headers: {
+                                "Authorization":
+                                    `Bearer ${token}`
+                            }
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    if (response.status === 401) {
+
+                        localStorage.removeItem(
+                            "adminToken"
+                        );
+
+                        localStorage.removeItem(
+                            "admin"
+                        );
+
+                        window.location.href =
+                            "../admin-login.html";
+
+                        return;
+
+                    }
+
+                    throw new Error(
+                        data.message ||
+                        "Failed to load dashboard"
+                    );
+
+                }
+
+
+                document.getElementById(
+                    "productsCount"
+                ).innerText =
+                    data.products;
+
+
+                document.getElementById(
+                    "projectsCount"
+                ).innerText =
+                    data.projects;
+
+
+                document.getElementById(
+                    "consultationsCount"
+                ).innerText =
+                    data.consultations;
+
+
+                document.getElementById(
+                    "quotesCount"
+                ).innerText =
+                    data.quotes;
+
+
+                document.getElementById(
+                    "contactsCount"
+                ).innerText =
+                    data.contacts;
+
+
+                document.getElementById(
+                    "pendingConsultationsCount"
+                ).innerText =
+                    data.pendingConsultations;
+
+
+                document.getElementById(
+                    "pendingQuotesCount"
+                ).innerText =
+                    data.pendingQuotes;
+
+
+                document.getElementById(
+                    "unreadContactsCount"
+                ).innerText =
+                    data.unreadContacts;
+
+
+                message.innerText =
+                    "Dashboard loaded successfully.";
+
+            }
+
+
+            catch (error) {
+
+                message.innerText =
+                    error.message;
+
+            }
+
+        }
+
+
+        // Logout
+        document.getElementById(
+            "logoutBtn"
+        ).addEventListener(
+            "click",
+            function() {
+
+                localStorage.removeItem(
+                    "adminToken"
+                );
+
+                localStorage.removeItem(
+                    "admin"
+                );
+
+                window.location.href =
+                    "../admin-login.html";
+
+            }
+        );
+
+
+        loadDashboard();
+
+    </script>
+
+
+</body>
+
+</html>

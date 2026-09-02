@@ -393,7 +393,7 @@ if (
    PRODUCTS DATA
 ===================================================== */
 
-const products = [
+let products = [
 
     /* ================= KITCHEN ================= */
 
@@ -611,6 +611,59 @@ const products = [
 
 ];
 
+async function loadProductsFromDatabase() {
+
+    try {
+
+        const response = await fetch(
+            "http://localhost:5000/api/products"
+        );
+
+        if (!response.ok) {
+            throw new Error("Failed to load products");
+        }
+
+        const databaseProducts = await response.json();
+
+        const formattedProducts = databaseProducts.map(function(product, index) {
+
+            return {
+
+                id: "db-" + product._id,
+
+                name: product.name,
+
+                category: product.category.toLowerCase(),
+
+                label: product.category.toUpperCase(),
+
+                description: product.description || "",
+
+                image: product.image || "",
+
+                tag: product.featured ? "FEATURED" : ""
+
+            };
+
+        });
+
+        products = [
+            ...products,
+            ...formattedProducts
+        ];
+
+        displayProducts("all");
+
+    } catch (error) {
+
+        console.error(
+            "Error loading products from database:",
+            error
+        );
+
+    }
+
+}
 
 
 /* =====================================================
@@ -865,6 +918,8 @@ else {
     displayProducts("all");
 
 }
+
+loadProductsFromDatabase();
 
 /* =====================================================
    GALLERY DATA
