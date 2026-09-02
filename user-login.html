@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>User Login - Sunrise Interior Studio</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <section class="login-page">
+
+        <div class="login-container">
+
+            <h1>User Login</h1>
+
+            <p>Login to your account</p>
+
+
+            <form id="userLoginForm">
+
+                <input
+                    type="email"
+                    id="userEmail"
+                    placeholder="Enter your email"
+                    required
+                >
+
+                <br><br>
+
+                <input
+                    type="password"
+                    id="userPassword"
+                    placeholder="Enter your password"
+                    required
+                >
+
+                <br><br>
+
+                <button type="submit">
+                    Login
+                </button>
+
+            </form>
+
+
+            <p id="message"></p>
+
+
+            <p>
+                Don't have an account?
+                <a href="signup.html">Sign Up</a>
+            </p>
+
+
+            <a href="login.html">
+                ← Back
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        document
+            .getElementById("userLoginForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const email =
+                    document.getElementById("userEmail").value;
+
+                const password =
+                    document.getElementById("userPassword").value;
+
+
+                // Temporary frontend login
+
+                if (email && password) {
+
+                    document.getElementById("message").innerText =
+                        "Login successful!";
+
+                }
+
+            });
+
+    </script>
+
+</body>
+
+</html>

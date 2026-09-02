@@ -2811,3 +2811,247 @@ footer {
     }
 
 }
+/* =====================================================
+   LOGIN & AUTHENTICATION
+===================================================== */
+
+.login-page {
+    min-height: calc(100vh - 78px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 5%;
+    background: var(--light-bg);
+}
+
+
+/* Login Card */
+
+.login-container {
+    width: 420px;
+    max-width: 100%;
+    padding: 45px 40px;
+    background: white;
+    text-align: center;
+
+    border-top: 4px solid var(--orange);
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.10);
+}
+
+
+/* Heading */
+
+.login-container h1 {
+    color: var(--dark);
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+
+/* Description */
+
+.login-container p {
+    color: var(--gray);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* Login Options */
+
+.login-option {
+    display: block;
+    width: 100%;
+    padding: 14px 20px;
+    margin: 18px 0;
+
+    border-radius: 3px;
+
+    font-size: 14px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+
+/* User Login */
+
+.user-login {
+    background: var(--dark);
+    color: white !important;
+}
+
+
+/* Admin Login */
+
+.admin-login {
+    background: var(--orange);
+    color: white !important;
+}
+
+
+/* Hover Effects */
+
+.user-login:hover {
+    background: #333333;
+    transform: translateY(-2px);
+}
+
+
+.admin-login:hover {
+    background: #a96315;
+    transform: translateY(-2px);
+}
+
+
+/* Back Button */
+
+.back-home {
+    display: inline-block;
+    margin-top: 15px;
+
+    color: var(--gray);
+
+    font-size: 13px;
+
+    transition: 0.2s;
+}
+
+
+.back-home:hover {
+    color: var(--orange);
+}
+
+
+/* =====================================================
+   LOGIN BUTTON IN HEADER
+===================================================== */
+
+.login-btn {
+    background: var(--dark);
+    color: white !important;
+
+    padding: 11px 18px;
+
+    border-radius: 3px;
+
+    font-size: 12px;
+
+    transition: 0.3s;
+}
+
+
+.login-btn:hover {
+    background: var(--orange);
+    color: white !important;
+}
+
+
+/* =====================================================
+   LOGIN FORM
+===================================================== */
+
+.login-container form {
+    margin-top: 25px;
+}
+
+
+.login-container input {
+    width: 100%;
+
+    padding: 13px 15px;
+
+    margin-bottom: 12px;
+
+    border: 1px solid #dddddd;
+
+    border-radius: 3px;
+
+    font-size: 14px;
+
+    outline: none;
+
+    box-sizing: border-box;
+}
+
+
+.login-container input:focus {
+    border-color: var(--orange);
+}
+
+
+.login-container button {
+    width: 100%;
+
+    padding: 13px;
+
+    border: none;
+
+    border-radius: 3px;
+
+    background: var(--orange);
+
+    color: white;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition: 0.3s;
+}
+
+
+.login-container button:hover {
+    background: #a96315;
+}
+
+
+/* Sign Up Link */
+
+.login-container a {
+    transition: 0.2s;
+}
+
+
+.login-container p a {
+    color: var(--orange);
+    font-weight: bold;
+}
+
+
+.login-container p a:hover {
+    text-decoration: underline;
+}
+
+
+/* Mobile */
+
+@media (max-width: 600px) {
+
+    .login-page {
+        padding: 40px 20px;
+    }
+
+    .login-container {
+        padding: 35px 25px;
+    }
+
+    .login-container h1 {
+        font-size: 28px;
+    }
+
+}
+/* SIGNUP MESSAGE */
+#signupMessage {
+    margin-top: 15px;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/* PHONE INPUT */
+.login-container input[type="tel"] {
+    width: 100%;
+}
