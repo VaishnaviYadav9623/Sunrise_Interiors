@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Login - Sunrise Interior Studio</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <section class="login-page">
+
+        <div class="login-container">
+
+            <h1>Admin Login</h1>
+
+            <p>Login to access the admin panel</p>
+
+
+            <form id="adminLoginForm">
+
+                <input
+                    type="email"
+                    id="adminEmail"
+                    placeholder="Admin Email"
+                    required
+                >
+
+                <br><br>
+
+                <input
+                    type="password"
+                    id="adminPassword"
+                    placeholder="Admin Password"
+                    required
+                >
+
+                <br><br>
+
+                <button type="submit">
+                    Admin Login
+                </button>
+
+            </form>
+
+
+            <p id="adminMessage"></p>
+
+
+            <a href="login.html">
+                ← Back
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <script>
+
+        document
+            .getElementById("adminLoginForm")
+            .addEventListener("submit", function(event) {
+
+                event.preventDefault();
+
+                const email =
+                    document.getElementById("adminEmail").value;
+
+                const password =
+                    document.getElementById("adminPassword").value;
+
+
+                // Temporary frontend login
+
+                if (email && password) {
+
+                    document.getElementById("adminMessage").innerText =
+                        "Admin login successful!";
+
+                }
+
+            });
+
+    </script>
+
+
+</body>
+
+</html>
