@@ -30,6 +30,26 @@
             margin: 0;
         }
 
+        .dashboard-tools {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .dashboard-tools a {
+            display: inline-block;
+            padding: 11px 16px;
+            background: var(--orange);
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .dashboard-tools a.secondary {
+            background: var(--dark);
+        }
+
         .logout-btn {
             padding: 10px 20px;
             border: none;
@@ -67,117 +87,119 @@
 </head>
 
 
-<body>
+<body class="admin-dashboard-page">
 
+    <div class="admin-shell">
+        <aside class="admin-sidebar">
+            <a href="dashboard.html" class="admin-brand" aria-label="Sunrise dashboard">
+                <span class="admin-brand-mark">S</span>
+                <span>
+                    <strong>Sunrise</strong>
+                    <small>INTERIOR STUDIO</small>
+                </span>
+            </a>
 
-    <section class="admin-dashboard">
+            <nav class="admin-nav" aria-label="Admin navigation">
+                <a href="dashboard.html" class="active">
+                    <span class="admin-nav-icon">▥</span>
+                    Overview
+                </a>
+                <a href="products.html">
+                    <span class="admin-nav-icon">◇</span>
+                    Products
+                </a>
+                <a href="categories.html">
+                    <span class="admin-nav-icon">⊞</span>
+                    Categories
+                </a>
+                <a href="projects.html">
+                    <span class="admin-nav-icon">▧</span>
+                    Gallery
+                </a>
+                <a href="enquiries.html">
+                    <span class="admin-nav-icon">✉</span>
+                    Enquiries
+                </a>
+            </nav>
 
-
-        <div class="dashboard-header">
-
-            <div>
-                <h1>Admin Dashboard</h1>
-
-                <p id="welcomeMessage">
-                    Welcome, Admin
-                </p>
+            <div class="admin-sidebar-footer">
+                <a href="../index.html">Visit website</a>
+                <button id="logoutBtn" type="button">
+                    <span class="admin-nav-icon">↪</span>
+                    Sign out
+                </button>
             </div>
+        </aside>
 
+        <div class="admin-main">
+            <header class="admin-topbar">
+                <p>Sunrise / Overview</p>
+                <div class="admin-account">
+                    <span id="welcomeMessage">Sunrise Admin</span>
+                    <span class="admin-account-mark">S</span>
+                </div>
+            </header>
 
-            <button
-                class="logout-btn"
-                id="logoutBtn"
-            >
-                Logout
-            </button>
+            <main class="admin-content">
+                <div class="admin-content-heading">
+                    <div>
+                        <p class="admin-eyebrow">STUDIO OVERVIEW</p>
+                        <h1>Everything, at a glance.</h1>
+                    </div>
+                    <a href="../index.html" class="admin-view-button">View website</a>
+                </div>
 
+                <p id="dashboardMessage" class="admin-dashboard-message">Loading dashboard...</p>
+
+                <section class="admin-overview-grid" aria-label="Studio statistics">
+                    <a href="products.html" class="admin-stat-card">
+                        <span class="admin-card-icon">◇</span>
+                        <span class="admin-card-label">Products</span>
+                        <strong id="productsCount">0</strong>
+                        <span class="admin-card-link">Manage <span>→</span></span>
+                    </a>
+
+                    <a href="categories.html" class="admin-stat-card featured">
+                        <span class="admin-card-icon">⊞</span>
+                        <span class="admin-card-label">Categories</span>
+                        <strong id="categoriesCount">0</strong>
+                        <span class="admin-card-link">Manage <span>→</span></span>
+                    </a>
+
+                    <a href="projects.html" class="admin-stat-card">
+                        <span class="admin-card-icon">▧</span>
+                        <span class="admin-card-label">Gallery projects</span>
+                        <strong id="projectsCount">0</strong>
+                        <span class="admin-card-link">Manage <span>→</span></span>
+                    </a>
+
+                    <a href="enquiries.html" class="admin-stat-card">
+                        <span class="admin-card-icon">✉</span>
+                        <span class="admin-card-label">New enquiries</span>
+                        <strong id="contactsCount">0</strong>
+                        <span class="admin-card-link">Manage <span>→</span></span>
+                    </a>
+                </section>
+
+                <section class="admin-focus-panel">
+                    <div>
+                        <p class="admin-eyebrow">TODAY&apos;S FOCUS</p>
+                        <h2>Keep the portfolio fresh.</h2>
+                        <p>Upload newly completed projects, mark standout products as featured, and reply to new client enquiries promptly.</p>
+                    </div>
+                    <span class="admin-focus-icon">▱</span>
+                </section>
+
+                <section class="admin-secondary-stats" aria-label="Pending requests">
+                    <div><strong id="quotesCount">0</strong><span>Quotes</span></div>
+                    <div><strong id="consultationsCount">0</strong><span>Consultations</span></div>
+                    <div><strong id="pendingConsultationsCount">0</strong><span>Pending consultations</span></div>
+                    <div><strong id="pendingQuotesCount">0</strong><span>Pending quotes</span></div>
+                    <div><strong id="unreadContactsCount">0</strong><span>Unread enquiries</span></div>
+                </section>
+            </main>
         </div>
-
-
-        <p id="dashboardMessage">
-            Loading dashboard...
-        </p>
-
-
-        <div class="dashboard-cards">
-
-
-            <div class="dashboard-card">
-
-                <h2 id="productsCount">0</h2>
-
-                <p>Products</p>
-
-            </div>
-
-
-            <div class="dashboard-card">
-
-                <h2 id="projectsCount">0</h2>
-
-                <p>Projects</p>
-
-            </div>
-
-
-            <div class="dashboard-card">
-
-                <h2 id="consultationsCount">0</h2>
-
-                <p>Consultations</p>
-
-            </div>
-
-
-            <div class="dashboard-card">
-
-                <h2 id="quotesCount">0</h2>
-
-                <p>Quotes</p>
-
-            </div>
-
-
-            <div class="dashboard-card">
-
-                <h2 id="contactsCount">0</h2>
-
-                <p>Contacts</p>
-
-            </div>
-
-
-            <div class="dashboard-card">
-
-                <h2 id="pendingConsultationsCount">0</h2>
-
-                <p>Pending Consultations</p>
-
-            </div>
-
-
-            <div class="dashboard-card">
-
-                <h2 id="pendingQuotesCount">0</h2>
-
-                <p>Pending Quotes</p>
-
-            </div>
-
-
-            <div class="dashboard-card">
-
-                <h2 id="unreadContactsCount">0</h2>
-
-                <p>Unread Contacts</p>
-
-            </div>
-
-
-        </div>
-
-
-    </section>
+    </div>
 
 
     <script>
@@ -206,10 +228,8 @@
             const admin =
                 JSON.parse(adminData);
 
-            document.getElementById(
-                "welcomeMessage"
-            ).innerText =
-                "Welcome, " + admin.name;
+            document.getElementById("welcomeMessage").innerText =
+                admin.name || "Sunrise Admin";
 
         }
 
@@ -273,6 +293,12 @@
                     "productsCount"
                 ).innerText =
                     data.products;
+
+
+                document.getElementById(
+                    "categoriesCount"
+                ).innerText =
+                    data.categories;
 
 
                 document.getElementById(

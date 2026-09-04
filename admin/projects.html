@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Manage Projects | Sunrise Interior Studio</title>
+
+    <link rel="stylesheet" href="../css/style.css">
+
+    <style>
+        .admin-projects {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px;
+        }
+
+        .admin-page-header,
+        .project-form-actions,
+        .project-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .admin-page-header {
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .admin-page-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .admin-page-header p,
+        .project-card p {
+            color: #666666;
+        }
+
+        .admin-button,
+        .project-actions button {
+            padding: 10px 16px;
+            border: 0;
+            cursor: pointer;
+            font: inherit;
+        }
+
+        .admin-button {
+            background: var(--dark);
+            color: white;
+        }
+
+        .admin-button.primary,
+        .project-actions .edit-button {
+            background: var(--orange);
+            color: white;
+        }
+
+        .admin-button.danger,
+        .project-actions .delete-button {
+            background: #8f382d;
+            color: white;
+        }
+
+        .project-form {
+            display: grid;
+            gap: 18px;
+            padding: 28px;
+            margin-bottom: 42px;
+            border: 1px solid #e5e5e5;
+            background: #faf9f6;
+        }
+
+        .project-form h2 {
+            margin-bottom: 5px;
+        }
+
+        .project-form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .project-form label {
+            display: grid;
+            gap: 8px;
+            color: #444444;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .project-form input,
+        .project-form textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #d8d8d8;
+            border-radius: 0;
+            background: white;
+            font: inherit;
+            font-weight: normal;
+        }
+
+        .project-form textarea {
+            min-height: 105px;
+            resize: vertical;
+        }
+
+        .project-form input:focus,
+        .project-form textarea:focus {
+            border-color: var(--orange);
+            outline: 0;
+        }
+
+        .project-form-actions {
+            margin-top: 4px;
+        }
+
+        #projectMessage {
+            min-height: 18px;
+            font-size: 12px;
+        }
+
+        .projects-list {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .project-card {
+            overflow: hidden;
+            border: 1px solid #e5e5e5;
+            background: white;
+        }
+
+        .project-card img {
+            display: block;
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .project-card-content {
+            padding: 18px;
+        }
+
+        .project-card h3 {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .project-card p {
+            margin: 6px 0;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        .project-actions {
+            margin-top: 16px;
+        }
+
+        .project-actions button {
+            flex: 1;
+            padding: 9px 12px;
+            font-size: 11px;
+        }
+
+        @media (max-width: 850px) {
+            .projects-list {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 650px) {
+            .admin-projects {
+                padding: 25px 18px;
+            }
+
+            .admin-page-header,
+            .project-form-row {
+                display: block;
+            }
+
+            .admin-page-header > div:last-child {
+                margin-top: 18px;
+            }
+
+            .project-form-row label + label {
+                margin-top: 18px;
+            }
+
+            .projects-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body class="admin-dashboard-page">
+
+    <div class="admin-shell">
+        <aside class="admin-sidebar">
+            <a href="dashboard.html" class="admin-brand" aria-label="Sunrise dashboard">
+                <span class="admin-brand-mark">S</span>
+                <span><strong>Sunrise</strong><small>INTERIOR STUDIO</small></span>
+            </a>
+
+            <nav class="admin-nav" aria-label="Admin navigation">
+                <a href="dashboard.html"><span class="admin-nav-icon">▥</span>Overview</a>
+                <a href="products.html"><span class="admin-nav-icon">◇</span>Products</a>
+                <a href="categories.html"><span class="admin-nav-icon">⊞</span>Categories</a>
+                <a href="projects.html" class="active"><span class="admin-nav-icon">▧</span>Gallery</a>
+                <a href="enquiries.html"><span class="admin-nav-icon">✉</span>Enquiries</a>
+            </nav>
+
+            <div class="admin-sidebar-footer">
+                <a href="../index.html">Visit website</a>
+                <button id="sidebarLogoutButton" type="button"><span class="admin-nav-icon">↪</span>Sign out</button>
+            </div>
+        </aside>
+
+        <div class="admin-main">
+            <header class="admin-topbar">
+                <p>Sunrise / Gallery</p>
+                <div class="admin-account"><span>Sunrise Admin</span><span class="admin-account-mark">S</span></div>
+            </header>
+
+    <main class="admin-projects admin-content">
+        <header class="admin-page-header">
+            <div>
+                <p class="admin-eyebrow">PORTFOLIO</p>
+                <h1>Gallery</h1>
+                <p>Add completed spaces and select work to feature.</p>
+            </div>
+
+            <div>
+                <button class="admin-button primary gallery-add-button" id="addProjectButton" type="button">＋ &nbsp;Add project</button>
+            </div>
+        </header>
+
+        <div id="projectModal" class="project-modal" hidden>
+            <div class="project-modal-backdrop" id="projectModalBackdrop"></div>
+
+        <form id="projectForm" class="project-form">
+            <div>
+                <h2 id="formTitle">Add Project</h2>
+                <button class="project-modal-close" id="closeProjectButton" type="button" aria-label="Close project form">×</button>
+            </div>
+
+            <input type="hidden" id="projectId">
+
+            <div class="project-form-row">
+                <label>
+                    Project title
+                    <input type="text" id="projectTitle" required placeholder="Example: Sunlit Apartment">
+                </label>
+
+                <label>
+                    Category
+                    <input type="text" id="projectCategory" required placeholder="Example: Complete Interiors">
+                </label>
+            </div>
+
+            <div class="project-form-row">
+                <label>
+                    Image URL
+                    <input type="url" id="projectImage" placeholder="https://example.com/project-image.jpg">
+                </label>
+
+                <label>
+                    Location
+                    <input type="text" id="projectLocation" placeholder="Example: Bengaluru">
+                </label>
+            </div>
+
+            <label>
+                Description
+                <textarea id="projectDescription" placeholder="Describe the project"></textarea>
+            </label>
+
+            <label>
+                <span><input type="checkbox" id="projectFeatured"> Featured project</span>
+            </label>
+
+            <div class="project-form-actions">
+                <button class="admin-button primary" id="saveButton" type="submit">Add Project</button>
+                <button class="admin-button" id="cancelButton" type="button" hidden>Cancel</button>
+            </div>
+
+            <p id="projectMessage" role="status" aria-live="polite"></p>
+        </form>
+        </div>
+
+        <div class="gallery-list-heading">
+            <div>
+                <p class="admin-eyebrow">STORED PROJECTS</p>
+                <h2>Gallery projects</h2>
+            </div>
+            <span id="projectsCountLabel" class="catalogue-count"></span>
+        </div>
+        <div id="projectsList" class="projects-list" aria-live="polite"></div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = "http://localhost:5000";
+        const token = localStorage.getItem("adminToken");
+        const projectModal = document.getElementById("projectModal");
+        const projectForm = document.getElementById("projectForm");
+        const projectMessage = document.getElementById("projectMessage");
+        const projectsList = document.getElementById("projectsList");
+        const saveButton = document.getElementById("saveButton");
+        const cancelButton = document.getElementById("cancelButton");
+
+        if (!token) {
+            window.location.href = "../admin-login.html";
+        }
+
+        function authHeaders() {
+            return {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            };
+        }
+
+        function resetForm() {
+            projectForm.reset();
+            document.getElementById("projectId").value = "";
+            document.getElementById("formTitle").textContent = "Add Project";
+            saveButton.textContent = "Add Project";
+            cancelButton.hidden = true;
+            projectModal.hidden = true;
+        }
+
+        function editProject(project) {
+            document.getElementById("projectId").value = project._id;
+            document.getElementById("projectTitle").value = project.title || "";
+            document.getElementById("projectCategory").value = project.category || "";
+            document.getElementById("projectImage").value = project.image || "";
+            document.getElementById("projectLocation").value = project.location || "";
+            document.getElementById("projectDescription").value = project.description || "";
+            document.getElementById("projectFeatured").checked = Boolean(project.featured);
+            document.getElementById("formTitle").textContent = "Edit Project";
+            saveButton.textContent = "Save Changes";
+            cancelButton.hidden = false;
+            openProjectForm();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+
+        async function loadProjects() {
+            projectsList.innerHTML = "<p>Loading projects...</p>";
+
+            try {
+                const response = await fetch(`${API_URL}/api/projects`);
+                const projects = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(projects.message || "Failed to load projects");
+                }
+
+                if (!projects.length) {
+                    projectsList.innerHTML = "<p>No projects found. Add the first one above.</p>";
+                    document.getElementById("projectsCountLabel").textContent = "0 projects";
+                    return;
+                }
+
+                document.getElementById("projectsCountLabel").textContent =
+                    `${projects.length} project${projects.length === 1 ? "" : "s"}`;
+                projectsList.replaceChildren();
+
+                projects.forEach((project) => {
+                    const card = document.createElement("article");
+                    card.className = "project-card";
+
+                    const imageSlot = document.createElement("div");
+                    imageSlot.className = "gallery-project-image";
+
+                    if (project.image) {
+                        const image = document.createElement("img");
+                        image.src = project.image;
+                        image.alt = project.title || "Project image";
+                        image.loading = "lazy";
+                        imageSlot.appendChild(image);
+                    }
+
+                    card.appendChild(imageSlot);
+
+                    const content = document.createElement("div");
+                    content.className = "project-card-content";
+                    content.innerHTML = `
+                        <h3></h3>
+                        <p><strong>Category:</strong> <span class="project-category"></span></p>
+                        <p><strong>Location:</strong> <span class="project-location"></span></p>
+                        <p class="project-description"></p>
+                        <div class="project-actions">
+                            <button class="edit-button" type="button">Edit</button>
+                            <button class="delete-button" type="button">Delete</button>
+                        </div>
+                    `;
+
+                    content.querySelector("h3").textContent = project.title;
+                    content.querySelector(".project-category").textContent = project.category;
+                    content.querySelector(".project-location").textContent = project.location || "Not specified";
+                    content.querySelector(".project-description").textContent = project.description || "No description";
+                    content.querySelector(".edit-button").addEventListener("click", () => editProject(project));
+                    content.querySelector(".delete-button").addEventListener("click", () => deleteProject(project._id));
+                    card.appendChild(content);
+                    projectsList.appendChild(card);
+                });
+            } catch (error) {
+                projectsList.innerHTML = `<p>${error.message}</p>`;
+            }
+        }
+
+        async function deleteProject(id) {
+            if (!window.confirm("Delete this project?")) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_URL}/api/projects/${id}`, {
+                    method: "DELETE",
+                    headers: authHeaders()
+                });
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || "Failed to delete project");
+                }
+
+                projectMessage.textContent = "Project deleted.";
+                await loadProjects();
+            } catch (error) {
+                projectMessage.textContent = error.message;
+            }
+        }
+
+        projectForm.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const projectId = document.getElementById("projectId").value;
+            const project = {
+                title: document.getElementById("projectTitle").value.trim(),
+                category: document.getElementById("projectCategory").value.trim(),
+                image: document.getElementById("projectImage").value.trim(),
+                location: document.getElementById("projectLocation").value.trim(),
+                description: document.getElementById("projectDescription").value.trim(),
+                featured: document.getElementById("projectFeatured").checked
+            };
+
+            try {
+                const response = await fetch(
+                    `${API_URL}/api/projects${projectId ? `/${projectId}` : ""}`,
+                    {
+                        method: projectId ? "PUT" : "POST",
+                        headers: authHeaders(),
+                        body: JSON.stringify(project)
+                    }
+                );
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.message || "Failed to save project");
+                }
+
+                projectMessage.textContent = projectId ? "Project updated." : "Project added.";
+                closeProjectForm();
+                await loadProjects();
+            } catch (error) {
+                projectMessage.textContent = error.message;
+            }
+        });
+
+        function openProjectForm() {
+            projectModal.hidden = false;
+            document.body.classList.add("modal-open");
+            document.getElementById("projectTitle").focus();
+        }
+
+        function closeProjectForm() {
+            resetForm();
+            document.body.classList.remove("modal-open");
+        }
+
+        document.getElementById("addProjectButton").addEventListener("click", () => {
+            resetForm();
+            openProjectForm();
+        });
+        cancelButton.addEventListener("click", closeProjectForm);
+        document.getElementById("closeProjectButton").addEventListener("click", closeProjectForm);
+        document.getElementById("projectModalBackdrop").addEventListener("click", closeProjectForm);
+        document.getElementById("sidebarLogoutButton").addEventListener("click", () => {
+            localStorage.removeItem("adminToken");
+            localStorage.removeItem("admin");
+            window.location.href = "../admin-login.html";
+        });
+        loadProjects();
+    </script>
+
+</body>
+
+</html>

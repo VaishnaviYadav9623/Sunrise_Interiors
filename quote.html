@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Get a Quote | Sunrise Interior Studio</title>
+
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+	<header class="header">
+
+		<div class="logo">
+			<div class="logo-sun">☼</div>
+
+			<div class="logo-text">
+				<h2>SUNRISE</h2>
+				<span>INTERIOR STUDIO</span>
+			</div>
+		</div>
+
+		<nav class="navbar">
+			<a href="index.html">Home</a>
+			<a href="about.html">About Us</a>
+			<a href="services.html">Services</a>
+			<a href="products.html">Products</a>
+			<a href="gallery.html">Gallery</a>
+			<a href="projects.html">Projects</a>
+			<a href="contact.html">Contact Us</a>
+			<a href="quote.html" class="quote-btn active">Get a Quote</a>
+		</nav>
+
+	</header>
+
+	<main>
+		<section class="quote-intro">
+			<div>
+				<p class="section-label">START YOUR PROJECT</p>
+				<h1>A space made<br>for your life.</h1>
+				<p>
+					Share a few details about your project and we&apos;ll prepare a thoughtful
+					starting estimate for your home, room or commercial space.
+				</p>
+			</div>
+
+			<div class="quote-intro-number" aria-hidden="true">01</div>
+		</section>
+
+		<section class="quote-section">
+			<div class="quote-side">
+				<div class="quote-image">
+					<img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=1100&q=85" alt="Contemporary interior designed by Sunrise Interior Studio">
+				</div>
+
+				<div class="quote-promise">
+					<span class="quote-promise-icon">✦</span>
+					<div>
+						<h2>Designed around you</h2>
+						<p>Every quote begins with your goals, your taste and the way you want to live.</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="quote-form-panel">
+				<p class="section-label">REQUEST A QUOTE</p>
+				<h2>Let&apos;s talk about your space.</h2>
+
+				<form id="quoteForm" class="quote-form">
+					<div class="quote-form-row">
+						<label>
+							Your name
+							<input type="text" name="name" placeholder="Enter your name" required>
+						</label>
+
+						<label>
+							Email address
+							<input type="email" name="email" placeholder="you@example.com" required>
+						</label>
+					</div>
+
+					<div class="quote-form-row">
+						<label>
+							Phone number
+							<input type="tel" name="phone" placeholder="+91 98765 43210">
+						</label>
+
+						<label>
+							Service required
+							<select name="service">
+								<option value="">Choose a service</option>
+								<option value="Modular Kitchen">Modular Kitchen</option>
+								<option value="Wardrobes">Wardrobes</option>
+								<option value="TV Units">TV Units</option>
+								<option value="Interior Designing">Interior Designing</option>
+								<option value="Furniture">Furniture</option>
+							</select>
+						</label>
+					</div>
+
+					<label>
+						Estimated budget
+						<select name="budget">
+							<option value="">Choose a budget range</option>
+							<option value="Under ₹5 lakh">Under ₹5 lakh</option>
+							<option value="₹5 - ₹10 lakh">₹5 - ₹10 lakh</option>
+							<option value="₹10 - ₹20 lakh">₹10 - ₹20 lakh</option>
+							<option value="₹20 lakh and above">₹20 lakh and above</option>
+						</select>
+					</label>
+
+					<label>
+						Project details
+						<textarea name="message" rows="6" placeholder="Tell us about your space, timeline and what you have in mind"></textarea>
+					</label>
+
+					<div class="quote-form-footer">
+						<button type="submit" class="primary-btn">Request My Quote</button>
+						<p id="quoteStatus" class="quote-status" role="status" aria-live="polite"></p>
+					</div>
+				</form>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<p>&copy; 2024 Sunrise Interior Studio. All rights reserved.</p>
+
+		<div class="footer-right">
+			<a href="about.html">About</a>
+			<a href="services.html">Services</a>
+			<a href="contact.html">Contact</a>
+		</div>
+	</footer>
+
+	<script>
+		const quoteForm = document.getElementById("quoteForm");
+		const quoteStatus = document.getElementById("quoteStatus");
+
+		quoteForm.addEventListener("submit", async (event) => {
+			event.preventDefault();
+			quoteStatus.textContent = "Submitting your request...";
+			quoteStatus.className = "quote-status";
+
+			try {
+				const response = await fetch("http://localhost:5000/api/quotes", {
+					method: "POST",
+					headers: { "Content-Type": "application/json" },
+					body: JSON.stringify(Object.fromEntries(new FormData(quoteForm)))
+				});
+
+				if (!response.ok) {
+					throw new Error("Unable to submit quote request");
+				}
+
+				quoteForm.reset();
+				quoteStatus.textContent = "Request received. We will contact you shortly.";
+				quoteStatus.classList.add("success");
+			} catch (error) {
+				quoteStatus.textContent = "We could not submit your request. Please try again or call us directly.";
+				quoteStatus.classList.add("error");
+			}
+		});
+	</script>
+
+	<script src="js/auth.js"></script>
+</body>
+
+</html>

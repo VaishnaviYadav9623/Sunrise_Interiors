@@ -20,6 +20,9 @@ router.get("/stats", auth, async (req, res) => {
         const products =
             await Product.countDocuments();
 
+        const categories =
+            await Product.distinct("category");
+
         const projects =
             await Project.countDocuments();
 
@@ -49,6 +52,7 @@ router.get("/stats", auth, async (req, res) => {
 
         res.json({
             products,
+            categories: categories.length,
             projects,
             consultations,
             quotes,

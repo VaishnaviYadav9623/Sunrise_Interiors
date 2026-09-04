@@ -611,9 +611,13 @@ let products = [
 
 ];
 
+let databaseProductsLoaded = false;
+
 async function loadProductsFromDatabase() {
 
     try {
+
+        products = [];
 
         const response = await fetch(
             "http://localhost:5000/api/products"
@@ -652,9 +656,14 @@ async function loadProductsFromDatabase() {
             ...formattedProducts
         ];
 
+        databaseProductsLoaded = true;
+
         displayProducts("all");
 
     } catch (error) {
+
+        products = [];
+        displayProducts("all");
 
         console.error(
             "Error loading products from database:",
@@ -691,6 +700,11 @@ const productCount =
 function displayProducts(category = "all") {
 
     productsGrid.innerHTML = "";
+
+    if (!databaseProductsLoaded) {
+        noProducts.style.display = "block";
+        return;
+    }
 
     let filteredProducts;
 
@@ -759,11 +773,13 @@ function displayProducts(category = "all") {
 
                 <div class="product-image">
 
-                    <img
-                        src="${product.image}"
-                        alt="${product.name}"
-                        loading="lazy"
-                    >
+                    ${product.image ? `
+                        <img
+                            src="${product.image}"
+                            alt="${product.name}"
+                            loading="lazy"
+                        >
+                    ` : ""}
 
                     <span class="product-category">
 
@@ -925,63 +941,7 @@ loadProductsFromDatabase();
    GALLERY DATA
 ===================================================== */
 
-const galleryItems = [
-
-    {
-        title: "Modern Modular Kitchen",
-        category: "kitchen",
-        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1200&q=85"
-    },
-
-    {
-        title: "Contemporary Living Room",
-        category: "living",
-        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1200&q=85"
-    },
-
-    {
-        title: "Elegant Kitchen Interior",
-        category: "kitchen",
-        image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1200&q=85"
-    },
-
-    {
-        title: "Minimal Bedroom",
-        category: "bedroom",
-        image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=1200&q=85"
-    },
-
-    {
-        title: "Warm Living Space",
-        category: "living",
-        image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1200&q=85"
-    },
-
-    {
-        title: "Contemporary Bedroom",
-        category: "bedroom",
-        image: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=1200&q=85"
-    },
-
-    {
-        title: "Modern Home Office",
-        category: "office",
-        image: "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=1200&q=85"
-    },
-
-    {
-        title: "Kitchen Storage Design",
-        category: "kitchen",
-        image: "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1200&q=85"
-    },
-
-    {
-        title: "Elegant Living Area",
-        category: "living",
-        image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1200&q=85"
-    }
-
-];
+let galleryItems = [];
 
 
 
@@ -1005,6 +965,10 @@ const galleryEmpty =
 ===================================================== */
 
 function displayGallery(category = "all") {
+
+    if (!galleryGrid) {
+        return;
+    }
 
     galleryGrid.innerHTML = "";
 
@@ -1064,11 +1028,13 @@ function displayGallery(category = "all") {
 
             galleryItem.innerHTML = `
 
-                <img
-                    src="${item.image}"
-                    alt="${item.title}"
-                    loading="lazy"
-                >
+                ${item.image ? `
+                    <img
+                        src="${item.image}"
+                        alt="${item.title}"
+                        loading="lazy"
+                    >
+                ` : ""}
 
 
                 <div class="gallery-overlay">
@@ -1146,6 +1112,29 @@ galleryFilters.forEach(
 
 if (galleryGrid) {
 
-    displayGallery("all");
+    async function loadGalleryFromDatabase() {
+        try {
+            const response = await fetch("http://localhost:5000/api/projects");
+            const projects = await response.json();
+
+            if (!response.ok) {
+                throw new Error(projects.message || "Failed to load gallery projects");
+            }
+
+            galleryItems = projects.map((project) => ({
+                title: project.title || "Untitled project",
+                category: (project.category || "interiors").toLowerCase(),
+                image: project.image || ""
+            }));
+
+            displayGallery("all");
+        } catch (error) {
+            galleryItems = [];
+            displayGallery("all");
+            console.error("Error loading gallery projects from database:", error);
+        }
+    }
+
+    loadGalleryFromDatabase();
 
 }

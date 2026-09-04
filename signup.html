@@ -110,7 +110,9 @@
 
 
 <script>
-document.getElementById("signupForm").addEventListener("submit", function(event) {
+const API_URL = "http://localhost:5000";
+
+document.getElementById("signupForm").addEventListener("submit", async function(event) {
 
     event.preventDefault();
 
@@ -123,10 +125,40 @@ document.getElementById("signupForm").addEventListener("submit", function(event)
         return;
     }
 
-    message.innerText = "Account created successfully!";
+    message.innerText = "Creating your account...";
 
+    try {
+        const response = await fetch(`${API_URL}/api/auth/users/register`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: document.getElementById("name").value.trim(),
+                email: document.getElementById("email").value.trim(),
+                phone: document.getElementById("phone").value.trim(),
+                password
+            })
+        });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.message || "Unable to create account");
+        }
+
+        message.innerText = "Account created. Redirecting to login...";
+        setTimeout(() => {
+            window.location.href = "user-login.html";
+        }, 700);
+    } catch (error) {
+        message.innerText = error instanceof TypeError
+            ? "The server is unavailable. Please start the backend and check the MongoDB connection."
+            : error.message;
+    }
 });
 </script>
 
+    <script src="js/auth.js"></script>
 </body>
 </html>
