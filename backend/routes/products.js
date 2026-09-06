@@ -28,6 +28,31 @@ router.get("/", async (req, res) => {
     }
 });
 
+// GET PUBLISHED PRODUCTS
+router.get("/public", async (req, res) => {
+
+    try {
+
+        const products =
+            await Product.find({
+                available: true
+            }).sort({
+                createdAt: -1
+            });
+
+        res.json(products);
+
+    } catch (error) {
+
+        res.status(500).json({
+            message: "Failed to fetch published products",
+            error: error.message
+        });
+
+    }
+
+});
+
 
 // GET SINGLE PRODUCT
 router.get("/:id", async (req, res) => {

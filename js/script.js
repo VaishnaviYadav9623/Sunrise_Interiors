@@ -620,8 +620,8 @@ async function loadProductsFromDatabase() {
         products = [];
 
         const response = await fetch(
-            "http://localhost:5000/api/products"
-        );
+          "http://localhost:5000/api/products/public"
+);
 
         if (!response.ok) {
             throw new Error("Failed to load products");
@@ -679,6 +679,9 @@ async function loadProductsFromDatabase() {
    PRODUCT ELEMENTS
 ===================================================== */
 
+const productCategories =
+    document.getElementById("productCategories");
+
 const productsGrid =
     document.getElementById("productsGrid");
 
@@ -691,7 +694,72 @@ const noProducts =
 const productCount =
     document.getElementById("productCount");
 
+async function loadCategories() {
 
+    try {
+
+        const response =
+            await fetch(
+                "http://localhost:5000/api/categories"
+            );
+
+        if (!response.ok) {
+            throw new Error("Failed to load categories");
+        }
+
+        const categories =
+            await response.json();
+
+        productCategories.innerHTML = "";
+
+        const allButton =
+            document.createElement("button");
+
+        allButton.className =
+            "category-btn active";
+
+        allButton.dataset.category =
+            "all";
+
+        allButton.textContent =
+            "All";
+
+        productCategories.appendChild(
+            allButton
+        );
+
+        categories.forEach(function(category) {
+
+            const button =
+                document.createElement("button");
+
+            button.className =
+                "category-btn";
+
+            button.dataset.category =
+                category.slug;
+
+            button.textContent =
+                category.name;
+
+            productCategories.appendChild(
+                button
+            );
+
+        });
+
+        setupCategoryButtons();
+
+    } catch (error) {
+
+        console.error(
+            "Error loading categories:",
+            error
+        );
+
+    }
+
+}
 
 /* =====================================================
    DISPLAY PRODUCTS
@@ -842,43 +910,50 @@ function displayProducts(category = "all") {
    CATEGORY FILTER
 ===================================================== */
 
-categoryButtons.forEach(
-    function(button) {
+function setupCategoryButtons() {
 
-        button.addEventListener(
-            "click",
-            function() {
-
-                const category =
-                    button.getAttribute("data-category");
-
-
-                /* REMOVE ACTIVE */
-
-                categoryButtons.forEach(
-                    function(btn) {
-
-                        btn.classList.remove("active");
-
-                    }
-                );
-
-
-                /* ADD ACTIVE */
-
-                button.classList.add("active");
-
-
-                /* DISPLAY */
-
-                displayProducts(category);
-
-            }
+    const categoryButtons =
+        document.querySelectorAll(
+            ".category-btn"
         );
 
-    }
-);
+    categoryButtons.forEach(
+        function(button) {
 
+            button.addEventListener(
+                "click",
+                function() {
+
+                    const category =
+                        button.getAttribute(
+                            "data-category"
+                        );
+
+                    categoryButtons.forEach(
+                        function(btn) {
+
+                            btn.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+                    button.classList.add(
+                        "active"
+                    );
+
+                    displayProducts(
+                        category
+                    );
+
+                }
+            );
+
+        }
+    );
+
+}
 
 
 /* =====================================================
@@ -886,56 +961,49 @@ categoryButtons.forEach(
 ===================================================== */
 
 const productParams =
-    new URLSearchParams(
-        window.location.search
-    );
-
+    new URLSearchParams(window.location.search);
 
 const selectedCategory =
     productParams.get("category");
 
+async function initializeProductsPage() {
 
-if (selectedCategory) {
+    await loadCategories();
 
-    const matchingButton =
-        document.querySelector(
-            `.category-btn[data-category="${selectedCategory}"]`
-        );
+    if (selectedCategory) {
 
+        const matchingButton =
+            document.querySelector(
+                `.category-btn[data-category="${selectedCategory}"]`
+            );
 
-    if (matchingButton) {
+        if (matchingButton) {
 
-        categoryButtons.forEach(
-            function(button) {
+            document
+                .querySelectorAll(".category-btn")
+                .forEach(function(button) {
 
-                button.classList.remove("active");
+                    button.classList.remove("active");
 
-            }
-        );
+                });
 
+            matchingButton.classList.add("active");
 
-        matchingButton.classList.add("active");
+            await loadProductsFromDatabase();
 
+            displayProducts(selectedCategory);
 
-        displayProducts(selectedCategory);
-
+            return;
+        }
     }
 
-    else {
-
-        displayProducts("all");
-
-    }
-
-}
-
-else {
+    await loadProductsFromDatabase();
 
     displayProducts("all");
 
 }
 
-loadProductsFromDatabase();
+initializeProductsPage();
 
 /* =====================================================
    GALLERY DATA
