@@ -1,19 +1,18 @@
 console.log("Sunrise Interior Studio website loaded successfully.");
 
 
-
 /* =====================================================
    SERVICE DETAILS DATA
 ===================================================== */
 
 const serviceData = {
 
-
     /* =================================================
        MODULAR KITCHEN
     ================================================= */
 
     "modular-kitchen": {
+
         number: "01",
 
         title: "Modular Kitchen",
@@ -25,34 +24,22 @@ const serviceData = {
             "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=85",
 
         features: [
-
             "Modern kitchen layouts",
-
             "Customized storage solutions",
-
             "Premium finishes and materials",
-
             "Kitchen accessories and organizers",
-
             "Space-efficient designs"
-
         ],
 
         productLink:
             "products.html?category=kitchen",
 
         designs: [
-
             "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
-
         ]
-
     },
-
 
 
     /* =================================================
@@ -60,6 +47,7 @@ const serviceData = {
     ================================================= */
 
     "wardrobes": {
+
         number: "02",
 
         title: "Wardrobes",
@@ -71,34 +59,22 @@ const serviceData = {
             "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=85",
 
         features: [
-
             "Sliding wardrobes",
-
             "Walk-in wardrobes",
-
             "Customized storage",
-
             "Multiple finish options",
-
             "Smart space utilization"
-
         ],
 
         productLink:
             "products.html?category=wardrobes",
 
         designs: [
-
             "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80"
-
         ]
-
     },
-
 
 
     /* =================================================
@@ -106,6 +82,7 @@ const serviceData = {
     ================================================= */
 
     "tv-units": {
+
         number: "03",
 
         title: "TV Units",
@@ -117,34 +94,22 @@ const serviceData = {
             "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85",
 
         features: [
-
             "Wall-mounted TV units",
-
             "Storage cabinets",
-
             "Display shelves",
-
             "Cable management",
-
             "Customized designs"
-
         ],
 
         productLink:
             "gallery.html?category=tv-units",
 
         designs: [
-
             "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=800&q=80"
-
         ]
-
     },
-
 
 
     /* =================================================
@@ -152,6 +117,7 @@ const serviceData = {
     ================================================= */
 
     "interior-design": {
+
         number: "04",
 
         title: "Interior Designing",
@@ -163,34 +129,22 @@ const serviceData = {
             "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85",
 
         features: [
-
             "Space planning",
-
             "3D design visualization",
-
             "Lighting solutions",
-
             "Material selection",
-
             "Complete home interiors"
-
         ],
 
         productLink:
             "projects.html?category=interiors",
 
         designs: [
-
             "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=800&q=80"
-
         ]
-
     },
-
 
 
     /* =================================================
@@ -198,6 +152,7 @@ const serviceData = {
     ================================================= */
 
     "furniture": {
+
         number: "05",
 
         title: "Furniture",
@@ -209,34 +164,22 @@ const serviceData = {
             "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85",
 
         features: [
-
             "Sofas and seating",
-
             "Dining furniture",
-
             "Beds and storage",
-
             "Customized furniture",
-
             "Premium finishes"
-
         ],
 
         productLink:
             "products.html?category=furniture",
 
         designs: [
-
             "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=800&q=80"
-
         ]
-
     },
-
 
 
     /* =================================================
@@ -244,6 +187,7 @@ const serviceData = {
     ================================================= */
 
     "kitchen-trolleys": {
+
         number: "06",
 
         title: "Kitchen Trolleys",
@@ -255,36 +199,24 @@ const serviceData = {
             "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1000&q=85",
 
         features: [
-
             "Pull-out baskets",
-
             "Tall units",
-
             "Corner solutions",
-
             "Bottle pull-outs",
-
             "Kitchen organizers"
-
         ],
 
         productLink:
             "products.html?category=kitchen-trolleys",
 
         designs: [
-
             "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
-
             "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80"
-
         ]
-
     }
 
 };
-
 
 
 /* =====================================================
@@ -296,7 +228,6 @@ const urlParams =
 
 const selectedService =
     urlParams.get("service");
-
 
 
 /* =====================================================
@@ -312,82 +243,139 @@ if (
         serviceData[selectedService];
 
 
-    /* ================= TITLE ================= */
+    /* TITLE */
 
-    document.getElementById("serviceTitle")
-        .textContent = service.title;
+    const serviceTitle =
+        document.getElementById("serviceTitle");
 
-    document.getElementById("serviceNumber")
-        .textContent = service.number;
+    if (serviceTitle) {
 
+        serviceTitle.textContent =
+            service.title;
 
-    /* ================= DESCRIPTION ================= */
-
-    document.getElementById("serviceDescription")
-        .textContent = service.description;
+    }
 
 
+    /* NUMBER */
 
-    /* ================= MAIN IMAGE ================= */
+    const serviceNumber =
+        document.getElementById("serviceNumber");
 
-    document.getElementById("serviceImage")
-        .src = service.image;
+    if (serviceNumber) {
 
+        serviceNumber.textContent =
+            service.number;
 
-
-    /* ================= PRODUCT LINK ================= */
-
-    document.getElementById("productLink")
-        .href = service.productLink;
-
+    }
 
 
-    /* ================= FEATURES ================= */
+    /* DESCRIPTION */
+
+    const serviceDescription =
+        document.getElementById("serviceDescription");
+
+    if (serviceDescription) {
+
+        serviceDescription.textContent =
+            service.description;
+
+    }
+
+
+    /* MAIN IMAGE */
+
+    const serviceImage =
+        document.getElementById("serviceImage");
+
+    if (serviceImage) {
+
+        serviceImage.src =
+            service.image;
+
+    }
+
+
+    /* PRODUCT LINK */
+
+    const productLink =
+        document.getElementById("productLink");
+
+    if (productLink) {
+
+        productLink.href =
+            service.productLink;
+
+    }
+
+
+    /* FEATURES */
 
     const featureList =
         document.getElementById("serviceFeatures");
 
+    if (featureList) {
 
-    featureList.innerHTML = "";
+        featureList.innerHTML = "";
 
-
-    service.features.forEach(
-        function(feature) {
+        service.features.forEach(function(feature) {
 
             const li =
                 document.createElement("li");
 
-            li.textContent = feature;
+            li.textContent =
+                feature;
 
             featureList.appendChild(li);
 
-        }
-    );
+        });
+
+    }
 
 
+    /* SAMPLE DESIGNS */
 
-    /* ================= SAMPLE DESIGNS ================= */
+    const design1 =
+        document.getElementById("design1");
 
-    document.getElementById("design1")
-        .src = service.designs[0];
+    const design2 =
+        document.getElementById("design2");
 
-
-    document.getElementById("design2")
-        .src = service.designs[1];
-
-
-    document.getElementById("design3")
-        .src = service.designs[2];
+    const design3 =
+        document.getElementById("design3");
 
 
+    if (design1) {
 
-    /* ================= PAGE TITLE ================= */
+        design1.src =
+            service.designs[0];
+
+    }
+
+
+    if (design2) {
+
+        design2.src =
+            service.designs[1];
+
+    }
+
+
+    if (design3) {
+
+        design3.src =
+            service.designs[2];
+
+    }
+
+
+    /* PAGE TITLE */
 
     document.title =
         service.title +
         " | Sunrise Interior Studio";
 
 }
+
 
 /* =====================================================
    PRODUCTS DATA
@@ -402,8 +390,10 @@ let products = [
         name: "Modular Kitchen Collection",
         category: "kitchen",
         label: "KITCHEN",
-        description: "Modern modular kitchens designed for style, storage and everyday functionality.",
-        image: "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Modern modular kitchens designed for style, storage and everyday functionality.",
+        image:
+            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=900&q=85",
         tag: "POPULAR"
     },
 
@@ -412,8 +402,10 @@ let products = [
         name: "Tall Kitchen Unit",
         category: "kitchen",
         label: "KITCHEN",
-        description: "Smart vertical storage solutions that maximize every inch of your kitchen.",
-        image: "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Smart vertical storage solutions that maximize every inch of your kitchen.",
+        image:
+            "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=900&q=85",
         tag: "NEW"
     },
 
@@ -422,8 +414,10 @@ let products = [
         name: "Corner Kitchen Unit",
         category: "kitchen",
         label: "KITCHEN",
-        description: "Practical corner solutions designed to make difficult spaces more useful.",
-        image: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Practical corner solutions designed to make difficult spaces more useful.",
+        image:
+            "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=900&q=85",
         tag: "FEATURED"
     },
 
@@ -432,8 +426,10 @@ let products = [
         name: "Kitchen Cabinet Collection",
         category: "kitchen",
         label: "KITCHEN",
-        description: "Elegant cabinets with organized storage and finishes to suit your interiors.",
-        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Elegant cabinets with organized storage and finishes to suit your interiors.",
+        image:
+            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85",
         tag: ""
     },
 
@@ -445,8 +441,10 @@ let products = [
         name: "Bottle Pull-Out",
         category: "kitchen-trolleys",
         label: "KITCHEN TROLLEYS",
-        description: "Slim pull-out storage designed for bottles, jars and everyday kitchen essentials.",
-        image: "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Slim pull-out storage designed for bottles, jars and everyday kitchen essentials.",
+        image:
+            "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=900&q=85",
         tag: "POPULAR"
     },
 
@@ -455,8 +453,10 @@ let products = [
         name: "Cutlery Organizer",
         category: "kitchen-trolleys",
         label: "KITCHEN TROLLEYS",
-        description: "Keep your cutlery neatly arranged with dedicated compartments.",
-        image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Keep your cutlery neatly arranged with dedicated compartments.",
+        image:
+            "https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=900&q=85",
         tag: ""
     },
 
@@ -465,8 +465,10 @@ let products = [
         name: "Corner Carousel",
         category: "kitchen-trolleys",
         label: "KITCHEN TROLLEYS",
-        description: "Rotating corner storage that gives easy access to hard-to-reach spaces.",
-        image: "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Rotating corner storage that gives easy access to hard-to-reach spaces.",
+        image:
+            "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?auto=format&fit=crop&w=900&q=85",
         tag: "SMART STORAGE"
     },
 
@@ -475,8 +477,10 @@ let products = [
         name: "Pantry Pull-Out",
         category: "kitchen-trolleys",
         label: "KITCHEN TROLLEYS",
-        description: "Organized pantry storage with easy-access pull-out shelves.",
-        image: "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Organized pantry storage with easy-access pull-out shelves.",
+        image:
+            "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=85",
         tag: "NEW"
     },
 
@@ -488,8 +492,10 @@ let products = [
         name: "Sliding Wardrobe",
         category: "wardrobes",
         label: "WARDROBES",
-        description: "Contemporary sliding wardrobes designed for elegant and efficient storage.",
-        image: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Contemporary sliding wardrobes designed for elegant and efficient storage.",
+        image:
+            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=85",
         tag: "POPULAR"
     },
 
@@ -498,8 +504,10 @@ let products = [
         name: "Hinged Wardrobe",
         category: "wardrobes",
         label: "WARDROBES",
-        description: "Classic hinged wardrobes customized to match your room and storage needs.",
-        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Classic hinged wardrobes customized to match your room and storage needs.",
+        image:
+            "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85",
         tag: ""
     },
 
@@ -508,8 +516,10 @@ let products = [
         name: "Walk-In Wardrobe",
         category: "wardrobes",
         label: "WARDROBES",
-        description: "A personalized walk-in storage experience designed around your lifestyle.",
-        image: "https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=900&q=85",
+        description:
+            "A personalized walk-in storage experience designed around your lifestyle.",
+        image:
+            "https://images.unsplash.com/photo-1617104678098-de229db51175?auto=format&fit=crop&w=900&q=85",
         tag: "PREMIUM"
     },
 
@@ -518,8 +528,10 @@ let products = [
         name: "Loft Storage Wardrobe",
         category: "wardrobes",
         label: "WARDROBES",
-        description: "Overhead storage solutions that help you make the most of your room.",
-        image: "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Overhead storage solutions that help you make the most of your room.",
+        image:
+            "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=900&q=85",
         tag: "SPACE SAVER"
     },
 
@@ -531,8 +543,10 @@ let products = [
         name: "Contemporary Sofa",
         category: "furniture",
         label: "FURNITURE",
-        description: "Comfortable contemporary seating designed to complement modern interiors.",
-        image: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Comfortable contemporary seating designed to complement modern interiors.",
+        image:
+            "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=900&q=85",
         tag: "POPULAR"
     },
 
@@ -541,8 +555,10 @@ let products = [
         name: "Modern Coffee Table",
         category: "furniture",
         label: "FURNITURE",
-        description: "Minimal coffee tables that add function and character to your living space.",
-        image: "https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Minimal coffee tables that add function and character to your living space.",
+        image:
+            "https://images.unsplash.com/photo-1532372320572-cda25653a26d?auto=format&fit=crop&w=900&q=85",
         tag: ""
     },
 
@@ -551,8 +567,10 @@ let products = [
         name: "Designer Bed",
         category: "furniture",
         label: "FURNITURE",
-        description: "Elegant bedroom furniture created for comfort and timeless appeal.",
-        image: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Elegant bedroom furniture created for comfort and timeless appeal.",
+        image:
+            "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?auto=format&fit=crop&w=900&q=85",
         tag: "FEATURED"
     },
 
@@ -561,8 +579,10 @@ let products = [
         name: "Study Table",
         category: "furniture",
         label: "FURNITURE",
-        description: "Functional study and work tables designed for modern homes.",
-        image: "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Functional study and work tables designed for modern homes.",
+        image:
+            "https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=900&q=85",
         tag: "NEW"
     },
 
@@ -574,8 +594,10 @@ let products = [
         name: "Floating TV Unit",
         category: "tv-units",
         label: "TV UNITS",
-        description: "Clean floating designs that create a modern and spacious living room.",
-        image: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Clean floating designs that create a modern and spacious living room.",
+        image:
+            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=900&q=85",
         tag: "POPULAR"
     },
 
@@ -584,8 +606,10 @@ let products = [
         name: "Wall Mounted TV Unit",
         category: "tv-units",
         label: "TV UNITS",
-        description: "Wall-mounted storage solutions that combine entertainment and organization.",
-        image: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Wall-mounted storage solutions that combine entertainment and organization.",
+        image:
+            "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=85",
         tag: ""
     },
 
@@ -594,8 +618,10 @@ let products = [
         name: "Storage TV Unit",
         category: "tv-units",
         label: "TV UNITS",
-        description: "A balanced combination of display space, storage and modern aesthetics.",
-        image: "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=85",
+        description:
+            "A balanced combination of display space, storage and modern aesthetics.",
+        image:
+            "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=85",
         tag: "FEATURED"
     },
 
@@ -604,75 +630,17 @@ let products = [
         name: "Modern TV Panel",
         category: "tv-units",
         label: "TV UNITS",
-        description: "Statement TV panels designed to become the focal point of your living room.",
-        image: "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85",
+        description:
+            "Statement TV panels designed to become the focal point of your living room.",
+        image:
+            "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=900&q=85",
         tag: "NEW"
     }
 
 ];
 
+
 let databaseProductsLoaded = false;
-
-async function loadProductsFromDatabase() {
-
-    try {
-
-        products = [];
-
-        const response = await fetch(
-          "http://localhost:5000/api/products/public"
-);
-
-        if (!response.ok) {
-            throw new Error("Failed to load products");
-        }
-
-        const databaseProducts = await response.json();
-
-        const formattedProducts = databaseProducts.map(function(product, index) {
-
-            return {
-
-                id: "db-" + product._id,
-
-                name: product.name,
-
-                category: product.category.toLowerCase(),
-
-                label: product.category.toUpperCase(),
-
-                description: product.description || "",
-
-                image: product.image || "",
-
-                tag: product.featured ? "FEATURED" : ""
-
-            };
-
-        });
-
-        products = [
-            ...products,
-            ...formattedProducts
-        ];
-
-        databaseProductsLoaded = true;
-
-        displayProducts("all");
-
-    } catch (error) {
-
-        products = [];
-        displayProducts("all");
-
-        console.error(
-            "Error loading products from database:",
-            error
-        );
-
-    }
-
-}
 
 
 /* =====================================================
@@ -685,16 +653,130 @@ const productCategories =
 const productsGrid =
     document.getElementById("productsGrid");
 
-const categoryButtons =
-    document.querySelectorAll(".category-btn");
-
 const noProducts =
     document.getElementById("noProducts");
 
 const productCount =
     document.getElementById("productCount");
 
-async function loadCategories() {
+
+/* =====================================================
+   LOAD PRODUCTS FROM DATABASE
+===================================================== */
+
+async function loadProductsFromDatabase() {
+
+    try {
+
+        const response =
+            await fetch(
+                "http://localhost:5000/api/products/public"
+            );
+
+        if (!response.ok) {
+
+            throw new Error(
+                "Failed to load products"
+            );
+
+        }
+
+        const databaseProducts =
+            await response.json();
+
+        const formattedProducts =
+            databaseProducts.map(
+                function(product) {
+
+                    return {
+
+                        id:
+                            "db-" +
+                            product._id,
+
+                        name:
+                            product.name,
+
+                        category:
+                            (product.category || "")
+                                .toLowerCase(),
+
+                        label:
+                            (product.category || "")
+                                .toUpperCase(),
+
+                        description:
+                            product.description || "",
+
+                        image:
+                            product.image || "",
+
+                        tag:
+                            product.featured
+                            ?
+                            "FEATURED"
+                            :
+                            ""
+
+                    };
+
+                }
+            );
+
+
+        /*
+         * DATABASE PRODUCTS REPLACE
+         * THE OLD STATIC PRODUCTS
+         */
+
+        products =
+            formattedProducts;
+
+        databaseProductsLoaded =
+            true;
+
+
+        /*
+         * DISPLAY ALL PRODUCTS
+         */
+
+        displayProducts("all");
+
+    }
+
+    catch (error) {
+
+        /*
+         * If database is unavailable,
+         * keep the static products.
+         */
+
+        databaseProductsLoaded =
+            true;
+
+        console.error(
+            "Error loading products from database:",
+            error
+        );
+
+        displayProducts("all");
+
+    }
+
+}
+
+
+/* =====================================================
+   LOAD CATEGORIES FROM DATABASE
+===================================================== */
+
+async function loadProductCategories() {
+
+    if (!productCategories) {
+
+        return;
+
+    }
 
     try {
 
@@ -704,13 +786,27 @@ async function loadCategories() {
             );
 
         if (!response.ok) {
-            throw new Error("Failed to load categories");
+
+            throw new Error(
+                "Failed to load categories"
+            );
+
         }
 
         const categories =
             await response.json();
 
+
+        /*
+         * CLEAR OLD HARD-CODED BUTTONS
+         */
+
         productCategories.innerHTML = "";
+
+
+        /*
+         * ALL BUTTON
+         */
 
         const allButton =
             document.createElement("button");
@@ -718,8 +814,10 @@ async function loadCategories() {
         allButton.className =
             "category-btn active";
 
-        allButton.dataset.category =
-            "all";
+        allButton.setAttribute(
+            "data-category",
+            "all"
+        );
 
         allButton.textContent =
             "All";
@@ -728,38 +826,167 @@ async function loadCategories() {
             allButton
         );
 
-        categories.forEach(function(category) {
 
-            const button =
-                document.createElement("button");
+        /*
+         * DATABASE CATEGORY BUTTONS
+         */
 
-            button.className =
-                "category-btn";
+        categories.forEach(
+            function(category) {
 
-            button.dataset.category =
-                category.slug;
+                const button =
+                    document.createElement("button");
 
-            button.textContent =
-                category.name;
+                button.className =
+                    "category-btn";
 
-            productCategories.appendChild(
-                button
+                button.setAttribute(
+                    "data-category",
+                    category.slug
+                );
+
+                button.textContent =
+                    category.name;
+
+                productCategories.appendChild(
+                    button
+                );
+
+            }
+        );
+
+
+        /*
+         * ADD CLICK EVENTS
+         */
+
+        addCategoryEvents();
+
+
+        /*
+         * CHECK CATEGORY FROM URL
+         */
+
+        const productParams =
+            new URLSearchParams(
+                window.location.search
             );
 
-        });
+        const selectedCategory =
+            productParams.get("category");
 
-        setupCategoryButtons();
 
-    } catch (error) {
+        if (selectedCategory) {
+
+            const matchingButton =
+                document.querySelector(
+                    `.category-btn[data-category="${selectedCategory}"]`
+                );
+
+
+            if (matchingButton) {
+
+                document
+                    .querySelectorAll(
+                        ".category-btn"
+                    )
+                    .forEach(
+                        function(button) {
+
+                            button.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+                matchingButton.classList.add(
+                    "active"
+                );
+
+                displayProducts(
+                    selectedCategory
+                );
+
+            }
+
+            else {
+
+                displayProducts("all");
+
+            }
+
+        }
+
+        else {
+
+            displayProducts("all");
+
+        }
+
+    }
+
+    catch (error) {
 
         console.error(
             "Error loading categories:",
             error
         );
 
+
+        /*
+         * FALLBACK TO ORIGINAL CATEGORIES
+         */
+
+        productCategories.innerHTML = `
+
+            <button
+                class="category-btn active"
+                data-category="all">
+                All
+            </button>
+
+            <button
+                class="category-btn"
+                data-category="kitchen">
+                Kitchen
+            </button>
+
+            <button
+                class="category-btn"
+                data-category="kitchen-trolleys">
+                Kitchen Trolleys
+            </button>
+
+            <button
+                class="category-btn"
+                data-category="wardrobes">
+                Wardrobes
+            </button>
+
+            <button
+                class="category-btn"
+                data-category="furniture">
+                Furniture
+            </button>
+
+            <button
+                class="category-btn"
+                data-category="tv-units">
+                TV Units
+            </button>
+
+        `;
+
+
+        addCategoryEvents();
+
+        displayProducts("all");
+
     }
 
 }
+
 
 /* =====================================================
    DISPLAY PRODUCTS
@@ -767,25 +994,33 @@ async function loadCategories() {
 
 function displayProducts(category = "all") {
 
+    if (!productsGrid) {
+
+        return;
+
+    }
+
     productsGrid.innerHTML = "";
 
-    if (!databaseProductsLoaded) {
-        noProducts.style.display = "block";
-        return;
-    }
 
     let filteredProducts;
 
 
-    /* SHOW ALL */
+    /*
+     * SHOW ALL
+     */
 
     if (category === "all") {
 
-        filteredProducts = products;
+        filteredProducts =
+            products;
 
     }
 
-    /* SHOW SELECTED CATEGORY */
+
+    /*
+     * SHOW SELECTED CATEGORY
+     */
 
     else {
 
@@ -793,7 +1028,10 @@ function displayProducts(category = "all") {
             products.filter(
                 function(product) {
 
-                    return product.category === category;
+                    return (
+                        product.category ===
+                        category.toLowerCase()
+                    );
 
                 }
             );
@@ -801,37 +1039,55 @@ function displayProducts(category = "all") {
     }
 
 
-    /* PRODUCT COUNT */
+    /*
+     * PRODUCT COUNT
+     */
 
-    productCount.textContent =
-        filteredProducts.length;
+    if (productCount) {
+
+        productCount.textContent =
+            filteredProducts.length;
+
+    }
 
 
-    /* NO PRODUCTS */
+    /*
+     * NO PRODUCTS
+     */
 
     if (filteredProducts.length === 0) {
 
-        noProducts.style.display = "block";
+        if (noProducts) {
+
+            noProducts.style.display =
+                "block";
+
+        }
 
         return;
 
     }
 
-    else {
 
-        noProducts.style.display = "none";
+    if (noProducts) {
+
+        noProducts.style.display =
+            "none";
 
     }
 
 
-    /* CREATE PRODUCT CARDS */
+    /*
+     * CREATE PRODUCT CARDS
+     */
 
     filteredProducts.forEach(
         function(product) {
 
             const card =
-                document.createElement("article");
-
+                document.createElement(
+                    "article"
+                );
 
             card.className =
                 "product-card";
@@ -841,13 +1097,20 @@ function displayProducts(category = "all") {
 
                 <div class="product-image">
 
-                    ${product.image ? `
+                    ${
+                        product.image
+                        ?
+                        `
                         <img
                             src="${product.image}"
                             alt="${product.name}"
                             loading="lazy"
                         >
-                    ` : ""}
+                        `
+                        :
+                        ""
+                    }
+
 
                     <span class="product-category">
 
@@ -859,9 +1122,11 @@ function displayProducts(category = "all") {
                     ${
                         product.tag
                         ?
-                        `<span class="product-tag">
+                        `
+                        <span class="product-tag">
                             ${product.tag}
-                        </span>`
+                        </span>
+                        `
                         :
                         ""
                     }
@@ -897,7 +1162,9 @@ function displayProducts(category = "all") {
             `;
 
 
-            productsGrid.appendChild(card);
+            productsGrid.appendChild(
+                card
+            );
 
         }
     );
@@ -905,17 +1172,17 @@ function displayProducts(category = "all") {
 }
 
 
-
 /* =====================================================
-   CATEGORY FILTER
+   ADD CATEGORY BUTTON EVENTS
 ===================================================== */
 
-function setupCategoryButtons() {
+function addCategoryEvents() {
 
     const categoryButtons =
         document.querySelectorAll(
             ".category-btn"
         );
+
 
     categoryButtons.forEach(
         function(button) {
@@ -929,6 +1196,11 @@ function setupCategoryButtons() {
                             "data-category"
                         );
 
+
+                    /*
+                     * REMOVE ACTIVE
+                     */
+
                     categoryButtons.forEach(
                         function(btn) {
 
@@ -939,9 +1211,19 @@ function setupCategoryButtons() {
                         }
                     );
 
+
+                    /*
+                     * ADD ACTIVE
+                     */
+
                     button.classList.add(
                         "active"
                     );
+
+
+                    /*
+                     * DISPLAY PRODUCTS
+                     */
 
                     displayProducts(
                         category
@@ -957,60 +1239,28 @@ function setupCategoryButtons() {
 
 
 /* =====================================================
-   CATEGORY FROM URL
+   START PRODUCTS
 ===================================================== */
 
-const productParams =
-    new URLSearchParams(window.location.search);
+if (productsGrid) {
 
-const selectedCategory =
-    productParams.get("category");
+    /*
+     * Load products and categories
+     * when Products page is opened.
+     */
 
-async function initializeProductsPage() {
+    loadProductsFromDatabase();
 
-    await loadCategories();
-
-    if (selectedCategory) {
-
-        const matchingButton =
-            document.querySelector(
-                `.category-btn[data-category="${selectedCategory}"]`
-            );
-
-        if (matchingButton) {
-
-            document
-                .querySelectorAll(".category-btn")
-                .forEach(function(button) {
-
-                    button.classList.remove("active");
-
-                });
-
-            matchingButton.classList.add("active");
-
-            await loadProductsFromDatabase();
-
-            displayProducts(selectedCategory);
-
-            return;
-        }
-    }
-
-    await loadProductsFromDatabase();
-
-    displayProducts("all");
+    loadProductCategories();
 
 }
 
-initializeProductsPage();
 
 /* =====================================================
    GALLERY DATA
 ===================================================== */
 
 let galleryItems = [];
-
 
 
 /* =====================================================
@@ -1021,11 +1271,14 @@ const galleryGrid =
     document.getElementById("galleryGrid");
 
 const galleryFilters =
-    document.querySelectorAll(".gallery-filter");
+    document.querySelectorAll(
+        ".gallery-filter"
+    );
 
 const galleryEmpty =
-    document.getElementById("galleryEmpty");
-
+    document.getElementById(
+        "galleryEmpty"
+    );
 
 
 /* =====================================================
@@ -1035,7 +1288,9 @@ const galleryEmpty =
 function displayGallery(category = "all") {
 
     if (!galleryGrid) {
+
         return;
+
     }
 
     galleryGrid.innerHTML = "";
@@ -1046,7 +1301,8 @@ function displayGallery(category = "all") {
 
     if (category === "all") {
 
-        filteredItems = galleryItems;
+        filteredItems =
+            galleryItems;
 
     }
 
@@ -1056,7 +1312,10 @@ function displayGallery(category = "all") {
             galleryItems.filter(
                 function(item) {
 
-                    return item.category === category;
+                    return (
+                        item.category ===
+                        category
+                    );
 
                 }
             );
@@ -1064,11 +1323,18 @@ function displayGallery(category = "all") {
     }
 
 
-    /* NO ITEMS */
+    /*
+     * NO ITEMS
+     */
 
     if (filteredItems.length === 0) {
 
-        galleryEmpty.style.display = "block";
+        if (galleryEmpty) {
+
+            galleryEmpty.style.display =
+                "block";
+
+        }
 
         return;
 
@@ -1076,19 +1342,27 @@ function displayGallery(category = "all") {
 
     else {
 
-        galleryEmpty.style.display = "none";
+        if (galleryEmpty) {
+
+            galleryEmpty.style.display =
+                "none";
+
+        }
 
     }
 
 
-    /* CREATE GALLERY ITEMS */
+    /*
+     * CREATE GALLERY ITEMS
+     */
 
     filteredItems.forEach(
         function(item) {
 
             const galleryItem =
-                document.createElement("article");
-
+                document.createElement(
+                    "article"
+                );
 
             galleryItem.className =
                 "gallery-item";
@@ -1096,13 +1370,19 @@ function displayGallery(category = "all") {
 
             galleryItem.innerHTML = `
 
-                ${item.image ? `
+                ${
+                    item.image
+                    ?
+                    `
                     <img
                         src="${item.image}"
                         alt="${item.title}"
                         loading="lazy"
                     >
-                ` : ""}
+                    `
+                    :
+                    ""
+                }
 
 
                 <div class="gallery-overlay">
@@ -1128,7 +1408,6 @@ function displayGallery(category = "all") {
     );
 
 }
-
 
 
 /* =====================================================
@@ -1164,7 +1443,9 @@ galleryFilters.forEach(
                 );
 
 
-                displayGallery(category);
+                displayGallery(
+                    category
+                );
 
             }
         );
@@ -1173,36 +1454,230 @@ galleryFilters.forEach(
 );
 
 
-
 /* =====================================================
-   INITIAL GALLERY
+   LOAD GALLERY FROM DATABASE
 ===================================================== */
 
 if (galleryGrid) {
 
     async function loadGalleryFromDatabase() {
+
         try {
-            const response = await fetch("http://localhost:5000/api/projects");
-            const projects = await response.json();
+
+            const response =
+                await fetch(
+                    "http://localhost:5000/api/projects"
+                );
+
+
+            const projects =
+                await response.json();
+
 
             if (!response.ok) {
-                throw new Error(projects.message || "Failed to load gallery projects");
+
+                throw new Error(
+                    projects.message ||
+                    "Failed to load gallery projects"
+                );
+
             }
 
-            galleryItems = projects.map((project) => ({
-                title: project.title || "Untitled project",
-                category: (project.category || "interiors").toLowerCase(),
-                image: project.image || ""
-            }));
+
+            galleryItems =
+                projects.map(
+                    function(project) {
+
+                        return {
+
+                            title:
+                                project.title ||
+                                "Untitled project",
+
+                            category:
+                                (
+                                    project.category ||
+                                    "interiors"
+                                ).toLowerCase(),
+
+                            image:
+                                project.image ||
+                                ""
+
+                        };
+
+                    }
+                );
+
 
             displayGallery("all");
-        } catch (error) {
-            galleryItems = [];
-            displayGallery("all");
-            console.error("Error loading gallery projects from database:", error);
+
         }
+
+        catch (error) {
+
+            galleryItems = [];
+
+            displayGallery("all");
+
+            console.error(
+                "Error loading gallery projects from database:",
+                error
+            );
+
+        }
+
     }
 
+
     loadGalleryFromDatabase();
+
+}
+
+
+/* =====================================================
+   CONSULTATION FORM
+===================================================== */
+
+const consultationForm =
+    document.getElementById(
+        "consultationForm"
+    );
+
+
+if (consultationForm) {
+
+    consultationForm.addEventListener(
+        "submit",
+        async function(e) {
+
+            e.preventDefault();
+
+
+            const message =
+                document.getElementById(
+                    "consultationMessage"
+                );
+
+
+            const consultationData = {
+
+                name:
+                    document.getElementById(
+                        "name"
+                    ).value.trim(),
+
+                email:
+                    document.getElementById(
+                        "email"
+                    ).value.trim(),
+
+                phone:
+                    document.getElementById(
+                        "phone"
+                    ).value.trim(),
+
+                location:
+                    document.getElementById(
+                        "location"
+                    ).value.trim(),
+
+                service:
+                    document.getElementById(
+                        "service"
+                    ).value,
+
+                propertyType:
+                    document.getElementById(
+                        "propertyType"
+                    ).value,
+
+                date:
+                    document.getElementById(
+                        "date"
+                    ).value,
+
+                time:
+                    document.getElementById(
+                        "time"
+                    ).value,
+
+                mode:
+                    document.querySelector(
+                        'input[name="mode"]:checked'
+                    )?.value || "",
+
+                message:
+                    document.getElementById(
+                        "requirements"
+                    ).value.trim()
+
+            };
+
+
+            try {
+
+                const response =
+                    await fetch(
+                        "http://localhost:5000/api/consultations",
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify(
+                                    consultationData
+                                )
+                        }
+                    );
+
+
+                const data =
+                    await response.json();
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        data.message ||
+                        "Failed to submit consultation"
+                    );
+
+                }
+
+
+                message.textContent =
+                    "Consultation request submitted successfully! We will contact you soon.";
+
+                message.style.color =
+                    "green";
+
+
+                consultationForm.reset();
+
+            }
+
+            catch (error) {
+
+                console.error(
+                    "Consultation error:",
+                    error
+                );
+
+
+                message.textContent =
+                    "Failed to submit consultation. Please try again.";
+
+                message.style.color =
+                    "red";
+
+            }
+
+        }
+    );
 
 }

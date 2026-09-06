@@ -2193,11 +2193,12 @@ footer {
 }
 
 .admin-dashboard-page .project-actions {
-    position: absolute;
-    gap: 7px;
-    margin: 0;
-    transform: translateY(-218px);
-    right: 10px;
+    position: static;
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    transform: none;
+    right: auto;
 }
 
 .admin-dashboard-page .project-card {
@@ -3099,7 +3100,7 @@ footer {
 .benefit-card {
     background: white;
     border: 1px solid #e5e5e5;
-    padding: 30px 25px;
+    padding: 20px 20px;
 }
 
 .benefit-icon {
@@ -5175,4 +5176,355 @@ footer {
 /* PHONE INPUT */
 .login-container input[type="tel"] {
     width: 100%;
+}
+
+/* =====================================================
+   ADMIN PROJECT CARD ACTIONS
+   ===================================================== */
+
+.admin-projects .project-card {
+    position: relative;
+}
+
+.admin-projects .project-card .project-actions {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-top: 16px;
+}
+
+.admin-projects .project-card .project-actions button {
+    position: static !important;
+    flex: 1;
+    width: auto;
+    height: auto;
+    padding: 9px 12px;
+}
+
+/* =========================================
+   ADMIN PROJECT CARD ACTIONS
+   ========================================= */
+
+.project-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card .gallery-project-image {
+    position: relative;
+    width: 100%;
+}
+
+.project-card .project-card-content {
+    position: relative;
+    padding: 18px;
+}
+
+.project-card .project-actions {
+    position: static !important;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+    width: 100%;
+}
+
+.project-card .project-actions button {
+    position: static !important;
+    flex: 1;
+    width: auto;
+    padding: 9px 12px;
+    border: none;
+    cursor: pointer;
+    font: inherit;
+    font-size: 11px;
+}
+
+.project-card .edit-button {
+    background: var(--orange);
+    color: white;
+}
+
+.project-card .delete-button {
+    background: #8f382d;
+    color: white;
+}
+
+/* =========================================================
+   CONSULTATION PAGE
+   ========================================================= */
+
+/* Hero */
+.consultation-hero {
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.consultation-hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.consultation-hero h1 {
+    font-size: 48px;
+    margin: 15px 0;
+}
+
+.consultation-hero h1 span,
+.section-heading h2 span,
+.consultation-form-intro h2 span {
+    display: inline-block;
+}
+
+.consultation-hero p:not(.section-label) {
+    max-width: 650px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+
+/* General section spacing */
+.consultation-benefits {
+    padding: 30px 20px;
+}
+
+
+/* Section heading */
+.consultation-benefits .section-heading,
+.consultation-process .section-heading {
+    max-width: 750px;
+    margin: 0 auto 35px;
+    text-align: center;
+}
+
+.consultation-benefits .section-heading p:not(.section-label),
+.consultation-process .section-heading p:not(.section-label) {
+    line-height: 1.7;
+}
+
+
+/* Benefits */
+.benefits-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.benefit-card {
+    padding: 30px 25px;
+    text-align: center;
+    border-radius: 12px;
+}
+
+.benefit-icon {
+    font-size: 38px;
+    margin-bottom: 18px;
+}
+
+.benefit-card h3 {
+    font-size: 20px;
+    margin-bottom: 12px;
+}
+
+.benefit-card p {
+    line-height: 1.6;
+}
+
+
+/* Consultation form */
+.consultation-form-wrapper {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.consultation-form-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 25px;
+}
+
+.consultation-form-intro h2 {
+    font-size: 36px;
+    margin: 12px 0;
+}
+
+.consultation-form-intro p:not(.section-label) {
+    line-height: 1.7;
+}
+
+
+/* Form headings */
+#consultationForm h3 {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+#consultationForm h3:first-child {
+    margin-top: 0;
+}
+
+
+/* Form rows */
+.form-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+
+/* Form groups */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 15px;
+    box-sizing: border-box;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+
+/* Consultation mode */
+.consultation-modes {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+}
+
+.consultation-modes label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 400;
+}
+
+.consultation-modes input {
+    width: auto;
+}
+
+
+/* Submit button */
+.consultation-submit {
+    margin-top: 15px;
+    padding: 14px 30px;
+    cursor: pointer;
+}
+
+#consultationMessage {
+    margin-top: 15px;
+}
+
+
+/* Process section */
+.process-grid {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.process-card {
+    text-align: center;
+    padding: 20px 20px;
+    border-radius: 12px;
+}
+
+.process-number {
+    display: block;
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.process-card h3 {
+    margin-bottom: 12px;
+}
+
+.process-card p {
+    line-height: 1.6;
+}
+
+
+/* Footer */
+.consultation-page .footer {
+    margin-top: 0;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .consultation-hero {
+        padding: 55px 20px;
+    }
+
+    .consultation-hero h1 {
+        font-size: 36px;
+    }
+
+    .consultation-benefits,
+    .consultation-form-section,
+    .consultation-process {
+        padding: 50px 20px;
+    }
+
+    .benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .consultation-form-intro h2 {
+        font-size: 30px;
+    }
+
+    .consultation-modes {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
 }

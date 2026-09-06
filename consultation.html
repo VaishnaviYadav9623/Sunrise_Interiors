@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book a Consultation | Sunrise Interior Studio</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <!-- Logo -->
+    <div class="logo-text">
+        <h2>SUNRISE</h2>
+        <span>INTERIOR STUDIO</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+
+        <a href="index.html">
+            Home
+        </a>
+
+        <a href="about.html">
+            About Us
+        </a>
+
+        <a href="services.html">
+            Services
+        </a>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="gallery.html">
+            Gallery
+        </a>
+
+        <a href="projects.html">
+            Projects
+        </a>
+
+        <a href="contact.html">
+            Contact Us
+        </a>
+
+        <a href="quote.html" class="quote-btn">
+            Get a Quote
+        </a>
+
+        <a href="login.html" class="login-btn">
+            Login
+        </a>
+
+    </nav>
+
+</header>
+ 
+
+    <!-- ================= HERO ================= -->
+    <section class="consultation-hero">
+
+        <div class="container">
+
+            <div class="consultation-hero-content">
+
+                <p class="section-label">BOOK A CONSULTATION</p>
+
+                <h1>
+                    Let's Design Your
+                    <span>Dream Space</span>
+                </h1>
+
+                <p>
+                    Have an idea for your home or workspace?
+                    Talk to our design experts and turn your ideas
+                    into a beautiful and functional space.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= WHY CONSULTATION ================= -->
+    <section class="consultation-benefits">
+
+        <div class="container">
+
+            <div class="section-heading">
+                <p class="section-label">WHY BOOK A CONSULTATION?</p>
+
+                <h2>
+                    Get Expert Guidance
+                    <span>For Your Space</span>
+                </h2>
+
+                <p>
+                    Every space is different. Our consultation helps us
+                    understand your needs and create solutions that
+                    suit your lifestyle, space and budget.
+                </p>
+            </div>
+
+
+            <div class="benefits-grid">
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🏠</div>
+
+                    <h3>Understand Your Requirements</h3>
+
+                    <p>
+                        Discuss your space, lifestyle, preferences
+                        and design ideas with our team.
+                    </p>
+                </div>
+
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💡</div>
+
+                    <h3>Get Expert Suggestions</h3>
+
+                    <p>
+                        Get professional suggestions for layouts,
+                        materials, colours and designs.
+                    </p>
+                </div>
+
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💰</div>
+
+                    <h3>Discuss Your Budget</h3>
+
+                    <p>
+                        Explore suitable design and material options
+                        according to your budget.
+                    </p>
+                </div>
+
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">📐</div>
+
+                    <h3>Plan Your Space</h3>
+
+                    <p>
+                        Discuss functionality, storage and effective
+                        utilization of your available space.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONSULTATION FORM ================= -->
+    <section class="consultation-form-section">
+
+        <div class="container">
+
+            <div class="consultation-form-wrapper">
+
+                <div class="consultation-form-intro">
+
+                    <p class="section-label">GET STARTED</p>
+
+                    <h2>
+                        Tell Us About
+                        <span>Your Project</span>
+                    </h2>
+
+                    <p>
+                        Fill in the details below and our team will
+                        contact you to discuss your consultation.
+                    </p>
+
+                </div>
+
+
+                <form id="consultationForm">
+
+                    <!-- Personal Details -->
+                    <h3>Personal Details</h3>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+
+                            <input
+                                type="text"
+                                id="name"
+                                name="name"
+                                placeholder="Enter your full name"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                placeholder="Enter your email"
+                                required
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+                            <label for="phone">Phone Number *</label>
+
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                placeholder="Enter your phone number"
+                                required
+                            >
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="location">Location</label>
+
+                            <input
+                                type="text"
+                                id="location"
+                                name="location"
+                                placeholder="City / Location"
+                            >
+                        </div>
+
+                    </div>
+
+
+                    <!-- Project Details -->
+                    <h3>Project Details</h3>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="service">
+                                Service Interested In *
+                            </label>
+
+                            <select id="service" name="service" required>
+
+                                <option value="">
+                                    Select a service
+                                </option>
+
+                                <option value="Modular Kitchen">
+                                    Modular Kitchen
+                                </option>
+
+                                <option value="Wardrobe">
+                                    Wardrobe
+                                </option>
+
+                                <option value="Furniture">
+                                    Furniture
+                                </option>
+
+                                <option value="Kitchen Trolleys">
+                                    Kitchen Trolleys
+                                </option>
+
+                                <option value="Interior Designing">
+                                    Interior Designing
+                                </option>
+
+                                <option value="TV Units">
+                                    TV Units
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="propertyType">
+                                Property Type
+                            </label>
+
+                            <select
+                                id="propertyType"
+                                name="propertyType"
+                            >
+
+                                <option value="">
+                                    Select property type
+                                </option>
+
+                                <option value="Apartment">
+                                    Apartment
+                                </option>
+
+                                <option value="Independent House">
+                                    Independent House
+                                </option>
+
+                                <option value="Villa">
+                                    Villa
+                                </option>
+
+                                <option value="Office">
+                                    Office
+                                </option>
+
+                                <option value="Other">
+                                    Other
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Consultation Preferences -->
+                    <h3>Consultation Preferences</h3>
+
+                    <div class="form-row">
+
+                        <div class="form-group">
+
+                            <label for="date">
+                                Preferred Date *
+                            </label>
+
+                            <input
+                                type="date"
+                                id="date"
+                                name="date"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="time">
+                                Preferred Time
+                            </label>
+
+                            <input
+                                type="time"
+                                id="time"
+                                name="time"
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>Consultation Mode *</label>
+
+                        <div class="consultation-modes">
+
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="mode"
+                                    value="Online"
+                                    required
+                                >
+                                Online
+                            </label>
+
+
+                            <label>
+                                <input
+                                    type="radio"
+                                    name="mode"
+                                    value="In-person"
+                                >
+                                In-person
+                            </label>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Requirements -->
+                    <div class="form-group">
+
+                        <label for="requirements">
+                            Tell Us About Your Requirements
+                        </label>
+
+                        <textarea
+                            id="requirements"
+                            name="requirements"
+                            rows="5"
+                            placeholder="Describe your requirements, ideas, preferences or any questions..."
+                        ></textarea>
+
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary consultation-submit"
+                    >
+                        Request Consultation
+                    </button>
+
+
+                    <p id="consultationMessage"></p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= WHAT HAPPENS NEXT ================= -->
+    <section class="consultation-process">
+
+        <div class="container">
+
+            <div class="section-heading">
+
+                <p class="section-label">WHAT HAPPENS NEXT?</p>
+
+                <h2>
+                    Simple Steps To
+                    <span>Get Started</span>
+                </h2>
+
+            </div>
+
+
+            <div class="process-grid">
+
+                <div class="process-card">
+
+                    <span class="process-number">01</span>
+
+                    <h3>Submit Your Request</h3>
+
+                    <p>
+                        Fill in the consultation form with
+                        your project requirements.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <span class="process-number">02</span>
+
+                    <h3>Our Team Contacts You</h3>
+
+                    <p>
+                        Our team reviews your request and
+                        contacts you to confirm the consultation.
+                    </p>
+
+                </div>
+
+
+                <div class="process-card">
+
+                    <span class="process-number">03</span>
+
+                    <h3>Discuss & Plan</h3>
+
+                    <p>
+                        Discuss your ideas, space, budget and
+                        design requirements with our experts.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="footer-content">
+
+                <div class="footer-brand">
+
+                    <h3>Sunrise Interior Studio</h3>
+
+                    <p>
+                        Creating beautiful, functional and
+                        personalized spaces for every lifestyle.
+                    </p>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <h4>Quick Links</h4>
+
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About Us</a>
+                    <a href="services.html">Services</a>
+                    <a href="products.html">Products</a>
+
+                </div>
+
+
+                <div class="footer-links">
+
+                    <h4>Explore</h4>
+
+                    <a href="gallery.html">Gallery</a>
+                    <a href="projects.html">Projects</a>
+                    <a href="contact.html">Contact Us</a>
+                    <a href="quote.html">Get a Quote</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="footer-bottom">
+
+                <p>
+                    © 2026 Sunrise Interior Studio.
+                    All Rights Reserved.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <script src="js/script.js"></script>
+
+</body>
+</html>

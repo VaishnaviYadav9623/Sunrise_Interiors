@@ -20,13 +20,34 @@ const consultationSchema = new mongoose.Schema(
             default: ""
         },
 
+        location: {
+            type: String,
+            default: ""
+        },
+
         service: {
+            type: String,
+            default: ""
+        },
+
+        propertyType: {
             type: String,
             default: ""
         },
 
         date: {
             type: Date
+        },
+
+        time: {
+            type: String,
+            default: ""
+        },
+
+        mode: {
+            type: String,
+            enum: ["Online", "In-person", ""],
+            default: ""
         },
 
         message: {
