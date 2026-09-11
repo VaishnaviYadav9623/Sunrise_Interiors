@@ -7,6 +7,8 @@
     <title>Sunrise Interior Studio</title>
 
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/premium.css">
+    <meta name="description" content="Sunrise Interior Studio — Designing beautiful kitchens, wardrobes, furniture and interiors that reflect your style. Premium modular kitchen and interior design services.">
 </head>
 
 <body>
@@ -17,10 +19,13 @@
 
         <!-- Logo -->
 
+        <a href="index.html" class="logo" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
+            <div class="logo-sun">☼</div>
             <div class="logo-text">
                 <h2>SUNRISE</h2>
                 <span>INTERIOR STUDIO</span>
             </div>
+        </a>
 
         
 
@@ -57,7 +62,7 @@
 
     <!-- ================= HERO SECTION ================= -->
 
-    <section class="hero">
+    <section class="hero" data-reveal>
 
         <div class="hero-overlay">
 
@@ -68,7 +73,7 @@
                 </p>
 
                 <h1>
-                    KITCHENS &<br>
+                    <span>KITCHENS</span> &amp;<br>
                     INTERIORS
                 </h1>
 
@@ -105,7 +110,7 @@
 
     <!-- ================= STATS SECTION ================= -->
 
-    <section class="stats">
+    <section class="stats" data-reveal-stagger>
 
         <div class="stat-box">
 
@@ -160,7 +165,7 @@
 
     <!-- ================= SERVICES SECTION ================= -->
 
-    <section class="services-section">
+    <section class="services-section"><!-- services -->
 
         <p class="section-label">
             OUR SERVICES
@@ -171,7 +176,7 @@
         </h2>
 
 
-        <div class="service-grid">
+        <div class="service-grid" data-reveal-stagger>
 
 
             <!-- Modular Kitchen -->
@@ -299,7 +304,7 @@
 
     <!-- ================= RECENT WORK ================= -->
 
-    <section class="recent-section">
+    <section class="recent-section" data-reveal>
 
         <p class="section-label">
             OUR RECENT WORK
@@ -310,7 +315,7 @@
         </h2>
 
 
-        <div class="project-grid">
+        <div class="project-grid" data-reveal-stagger>
 
             <img
                 src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
@@ -340,7 +345,7 @@
 
     <!-- ================= CTA SECTION ================= -->
 
-    <section class="cta">
+    <section class="cta" data-reveal>
 
         <div>
 
@@ -391,8 +396,8 @@
 
 
     <script src="js/script.js"></script>
-
     <script src="js/auth.js"></script>
+    <script src="js/premium.js"></script>
 </body>
 
 </html>
