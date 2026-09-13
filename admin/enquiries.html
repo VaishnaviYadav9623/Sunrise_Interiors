@@ -1,199 +1,1365 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Enquiries | Sunrise Interior Studio</title>
+```
+<title>Enquiries | Sunrise Interior Studio</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+    .enquiries-content {
+        max-width: 1400px;
+    }
+
+    .enquiry-types {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+        margin: 35px 0;
+    }
+
+    .enquiry-type-card {
+        border: 1px solid #ddd;
+        background: #fff;
+        padding: 30px;
+        cursor: pointer;
+        transition: 0.25s ease;
+        text-align: left;
+    }
+
+    .enquiry-type-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    }
+
+    .enquiry-type-card.active {
+        border-color: #111;
+        box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    }
+
+    .enquiry-type-card p {
+        margin: 0 0 12px;
+        font-size: 12px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        color: #777;
+    }
+
+    .enquiry-type-card h2 {
+        margin: 0 0 18px;
+        font-size: 24px;
+    }
+
+    .enquiry-type-count {
+        font-size: 34px;
+        font-weight: 600;
+    }
+
+    .enquiries-message {
+        margin-bottom: 20px;
+        color: #666;
+    }
+
+    .enquiries-panel {
+        margin-top: 20px;
+    }
+
+    .enquiry-list {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .enquiry-card {
+        background: #fff;
+        border: 1px solid #e1e1e1;
+        padding: 24px;
+        display: flex;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    .enquiry-details {
+        flex: 1;
+    }
+
+    .enquiry-details h2 {
+        margin: 0 0 6px;
+        font-size: 21px;
+    }
+
+    .enquiry-subject {
+        margin: 0 0 12px;
+        font-weight: 600;
+    }
+
+    .enquiry-body {
+        margin: 0 0 15px;
+        line-height: 1.6;
+        color: #555;
+    }
+
+    .enquiry-contact-line {
+        margin: 0;
+        color: #777;
+        font-size: 14px;
+    }
+
+    .enquiry-actions {
+        min-width: 150px;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 15px;
+    }
+
+    .enquiry-actions time {
+        color: #777;
+        font-size: 14px;
+    }
+
+    .enquiry-status {
+        padding: 8px 12px;
+        border: 1px solid #ccc;
+        background: white;
+    }
+
+    .enquiry-status.pending {
+        border-color: #d6a600;
+    }
+
+    .enquiry-status.contacted,
+    .enquiry-status.read,
+    .enquiry-status.reviewed {
+        border-color: #777;
+    }
+
+    .enquiry-status.completed,
+    .enquiry-status.replied,
+    .enquiry-status.approved {
+        border-color: #39834a;
+    }
+
+    .enquiry-status.cancelled,
+    .enquiry-status.rejected {
+        border-color: #b33a3a;
+    }
+
+    .enquiries-empty-state {
+        padding: 60px 30px;
+        text-align: center;
+        border: 1px dashed #ccc;
+        background: #fff;
+    }
+
+    .enquiries-empty-state h2 {
+        margin-bottom: 8px;
+    }
+
+    .enquiry-back {
+        display: none;
+        margin-bottom: 20px;
+        border: 0;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        font-size: 15px;
+    }
+
+    .enquiry-section-title {
+        margin-bottom: 20px;
+    }
+
+    .enquiry-section-title h2 {
+        margin: 0;
+    }
+
+    @media (max-width: 900px) {
+        .enquiry-types {
+            grid-template-columns: 1fr;
+        }
+
+        .enquiry-card {
+            flex-direction: column;
+        }
+
+        .enquiry-actions {
+            align-items: flex-start;
+        }
+    }
+</style>
+```
+
 </head>
 
 <body class="admin-dashboard-page">
 
-    <div class="admin-shell">
-        <aside class="admin-sidebar">
-            <a href="dashboard.html" class="admin-brand" aria-label="Sunrise dashboard">
-                <span class="admin-brand-mark">S</span>
-                <span><strong>Sunrise</strong><small>INTERIOR STUDIO</small></span>
+```
+<div class="admin-shell">
+
+    <aside class="admin-sidebar">
+
+        <a href="dashboard.html"
+            class="admin-brand"
+            aria-label="Sunrise dashboard">
+
+            <span class="admin-brand-mark">S</span>
+
+            <span>
+                <strong>Sunrise</strong>
+                <small>INTERIOR STUDIO</small>
+            </span>
+
+        </a>
+
+
+        <nav class="admin-nav"
+            aria-label="Admin navigation">
+
+            <a href="dashboard.html">
+                <span class="admin-nav-icon">▥</span>
+                Overview
             </a>
 
-            <nav class="admin-nav" aria-label="Admin navigation">
-                <a href="dashboard.html"><span class="admin-nav-icon">▥</span>Overview</a>
-                <a href="products.html"><span class="admin-nav-icon">◇</span>Products</a>
-                <a href="categories.html"><span class="admin-nav-icon">⊞</span>Categories</a>
-                <a href="projects.html"><span class="admin-nav-icon">▧</span>Projects</a>
-                <a href="enquiries.html" class="active"><span class="admin-nav-icon">✉</span>Enquiries</a>
-            </nav>
+            <a href="products.html">
+                <span class="admin-nav-icon">◇</span>
+                Products
+            </a>
 
-            <div class="admin-sidebar-footer">
-                <a href="../index.html">Visit website</a>
-                <button id="logoutButton" type="button"><span class="admin-nav-icon">↪</span>Sign out</button>
-            </div>
-        </aside>
+            <a href="categories.html">
+                <span class="admin-nav-icon">⊞</span>
+                Categories
+            </a>
 
-        <div class="admin-main">
-            <header class="admin-topbar">
-                <p>Sunrise / Enquiries</p>
-                <div class="admin-account"><span id="welcomeMessage">Sunrise Admin</span><span class="admin-account-mark">S</span></div>
-            </header>
+            <a href="projects.html">
+                <span class="admin-nav-icon">▧</span>
+                Projects
+            </a>
 
-            <main class="admin-content enquiries-content">
-                <section class="enquiries-heading">
-                    <p class="admin-eyebrow">CLIENT LEADS</p>
-                    <h1>Enquiries</h1>
-                    <p>Track every website enquiry and contact request.</p>
-                </section>
+            <a href="enquiries.html"
+                class="active">
 
-                <p id="enquiriesMessage" class="enquiries-message" role="status" aria-live="polite">Loading enquiries...</p>
-                <section id="enquiriesPanel" class="enquiries-panel" aria-live="polite"></section>
-            </main>
+                <span class="admin-nav-icon">✉</span>
+                Enquiries
+
+            </a>
+
+        </nav>
+
+
+        <div class="admin-sidebar-footer">
+
+            <a href="../index.html">
+                Visit website
+            </a>
+
+            <button id="logoutButton"
+                type="button">
+
+                <span class="admin-nav-icon">↪</span>
+                Sign out
+
+            </button>
+
         </div>
+
+    </aside>
+
+
+    <div class="admin-main">
+
+        <header class="admin-topbar">
+
+            <p>
+                Sunrise / Enquiries
+            </p>
+
+            <div class="admin-account">
+
+                <span id="welcomeMessage">
+                    Sunrise Admin
+                </span>
+
+                <span class="admin-account-mark">
+                    S
+                </span>
+
+            </div>
+
+        </header>
+
+
+        <main class="admin-content enquiries-content">
+
+            <section class="enquiries-heading">
+
+                <p class="admin-eyebrow">
+                    CLIENT LEADS
+                </p>
+
+                <h1>
+                    Enquiries
+                </h1>
+
+                <p>
+                    Manage contact messages, consultation requests
+                    and quotation enquiries.
+                </p>
+
+            </section>
+
+
+            <!-- ================= THREE TYPES ================= -->
+
+            <section class="enquiry-types">
+
+                <button
+                    class="enquiry-type-card active"
+                    data-type="contacts">
+
+                    <p>
+                        Website Messages
+                    </p>
+
+                    <h2>
+                        Contact Queries
+                    </h2>
+
+                    <span
+                        id="contactCount"
+                        class="enquiry-type-count">
+                        0
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="enquiry-type-card"
+                    data-type="consultations">
+
+                    <p>
+                        Service Requests
+                    </p>
+
+                    <h2>
+                        Consultations
+                    </h2>
+
+                    <span
+                        id="consultationCount"
+                        class="enquiry-type-count">
+                        0
+                    </span>
+
+                </button>
+
+
+                <button
+                    class="enquiry-type-card"
+                    data-type="quotes">
+
+                    <p>
+                        Project Requests
+                    </p>
+
+                    <h2>
+                        Quotation Queries
+                    </h2>
+
+                    <span
+                        id="quoteCount"
+                        class="enquiry-type-count">
+                        0
+                    </span>
+
+                </button>
+
+            </section>
+
+
+            <button
+                id="backButton"
+                class="enquiry-back"
+                type="button">
+
+                ← Back to enquiry types
+
+            </button>
+
+
+            <div
+                id="selectedTitle"
+                class="enquiry-section-title">
+
+                <h2>
+                    Contact Queries
+                </h2>
+
+            </div>
+
+
+            <p
+                id="enquiriesMessage"
+                class="enquiries-message"
+                role="status"
+                aria-live="polite">
+
+                Loading enquiries...
+
+            </p>
+
+
+            <section
+                id="enquiriesPanel"
+                class="enquiries-panel"
+                aria-live="polite">
+            </section>
+
+        </main>
+
     </div>
 
-    <script>
-        const API_URL = "http://localhost:5000";
-        const token = localStorage.getItem("adminToken");
-        const enquiriesPanel = document.getElementById("enquiriesPanel");
-        const enquiriesMessage = document.getElementById("enquiriesMessage");
+</div>
 
-        if (!token) {
-            window.location.href = "../admin-login.html";
+
+<script>
+
+    const API_URL =
+        "http://localhost:5000";
+
+
+    const token =
+        localStorage.getItem("adminToken");
+
+
+    const enquiriesPanel =
+        document.getElementById("enquiriesPanel");
+
+
+    const enquiriesMessage =
+        document.getElementById("enquiriesMessage");
+
+
+    const typeCards =
+        document.querySelectorAll(".enquiry-type-card");
+
+
+    const selectedTitle =
+        document.getElementById("selectedTitle");
+
+
+    const backButton =
+        document.getElementById("backButton");
+
+
+    let contacts = [];
+    let consultations = [];
+    let quotes = [];
+
+    let currentType = "contacts";
+
+
+    /* ================= LOGIN ================= */
+
+    if (!token) {
+
+        window.location.href =
+            "../admin-login.html";
+
+    }
+
+
+    /* ================= ADMIN NAME ================= */
+
+    const adminData =
+        localStorage.getItem("admin");
+
+
+    if (adminData) {
+
+        document.getElementById(
+            "welcomeMessage"
+        ).textContent =
+            JSON.parse(adminData).name ||
+            "Sunrise Admin";
+
+    }
+
+
+    /* ================= DATE ================= */
+
+    function formatDate(value) {
+
+        if (!value) {
+            return "—";
         }
 
-        const adminData = localStorage.getItem("admin");
-        if (adminData) {
-            document.getElementById("welcomeMessage").textContent =
-                JSON.parse(adminData).name || "Sunrise Admin";
+        return new Date(value)
+            .toLocaleDateString(
+                "en-IN",
+                {
+                    day: "numeric",
+                    month: "short",
+                    year: "numeric"
+                }
+            );
+
+    }
+
+
+    /* ================= EMPTY ================= */
+
+    function renderEmptyState(type) {
+
+        enquiriesPanel.className =
+            "enquiries-panel enquiries-empty-state";
+
+        let text =
+            "New enquiries will appear here.";
+
+        if (type === "contacts") {
+
+            text =
+                "New contact messages will appear here.";
+
         }
 
-        function formatDate(value) {
-            return new Date(value).toLocaleDateString("en-IN", {
-                day: "numeric",
-                month: "short",
-                year: "numeric"
-            });
+        if (type === "consultations") {
+
+            text =
+                "New consultation requests will appear here.";
+
         }
 
-        function renderEmptyState() {
-            enquiriesPanel.className = "enquiries-panel enquiries-empty-state";
+        if (type === "quotes") {
+
+            text =
+                "New quotation requests will appear here.";
+
+        }
+
+
+        enquiriesPanel.innerHTML = `
+
+            <h2>
+                No enquiries yet.
+            </h2>
+
+            <p>
+                ${text}
+            </p>
+
+        `;
+
+    }
+
+
+    /* ================= CONTACT CARD ================= */
+
+    function renderContact(contact) {
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "enquiry-card";
+
+
+        card.innerHTML = `
+
+            <div class="enquiry-details">
+
+                <h2>
+                    ${escapeHTML(contact.name)}
+                </h2>
+
+                <p class="enquiry-subject">
+                    ${escapeHTML(
+                        contact.subject ||
+                        "Website enquiry"
+                    )}
+                </p>
+
+                <p class="enquiry-body">
+                    ${escapeHTML(contact.message)}
+                </p>
+
+                <p class="enquiry-contact-line">
+                    ${escapeHTML(contact.email)}
+                    ${contact.phone
+                        ? " · " +
+                          escapeHTML(contact.phone)
+                        : ""}
+                </p>
+
+            </div>
+
+
+            <div class="enquiry-actions">
+
+                <time>
+                    ${formatDate(contact.createdAt)}
+                </time>
+
+                ${createStatusSelect(
+                    contact._id,
+                    contact.status,
+                    [
+                        "unread",
+                        "read",
+                        "replied"
+                    ],
+                    "contacts"
+                )}
+
+            </div>
+
+        `;
+
+
+        enquiriesPanel.appendChild(card);
+
+    }
+
+
+    /* ================= CONSULTATION CARD ================= */
+
+    function renderConsultation(consultation) {
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "enquiry-card";
+
+
+        card.innerHTML = `
+
+            <div class="enquiry-details">
+
+                <h2>
+                    ${escapeHTML(consultation.name)}
+                </h2>
+
+                <p class="enquiry-subject">
+                    ${escapeHTML(
+                        consultation.service ||
+                        "Consultation request"
+                    )}
+                </p>
+
+                <p class="enquiry-body">
+
+                    ${consultation.propertyType
+                        ? "Property: " +
+                          escapeHTML(
+                              consultation.propertyType
+                          ) +
+                          "<br>"
+                        : ""}
+
+                    ${consultation.location
+                        ? "Location: " +
+                          escapeHTML(
+                              consultation.location
+                          ) +
+                          "<br>"
+                        : ""}
+
+                    ${consultation.date
+                        ? "Date: " +
+                          formatDate(
+                              consultation.date
+                          ) +
+                          "<br>"
+                        : ""}
+
+                    ${consultation.time
+                        ? "Time: " +
+                          escapeHTML(
+                              consultation.time
+                          ) +
+                          "<br>"
+                        : ""}
+
+                    ${consultation.mode
+                        ? "Mode: " +
+                          escapeHTML(
+                              consultation.mode
+                          ) +
+                          "<br>"
+                        : ""}
+
+                    ${consultation.message
+                        ? "<br>" +
+                          escapeHTML(
+                              consultation.message
+                          )
+                        : ""}
+
+                </p>
+
+                <p class="enquiry-contact-line">
+
+                    ${escapeHTML(
+                        consultation.email
+                    )}
+
+                    ${consultation.phone
+                        ? " · " +
+                          escapeHTML(
+                              consultation.phone
+                          )
+                        : ""}
+
+                </p>
+
+            </div>
+
+
+            <div class="enquiry-actions">
+
+                <time>
+                    ${formatDate(
+                        consultation.createdAt
+                    )}
+                </time>
+
+                ${createStatusSelect(
+                    consultation._id,
+                    consultation.status,
+                    [
+                        "pending",
+                        "contacted",
+                        "completed",
+                        "cancelled"
+                    ],
+                    "consultations"
+                )}
+
+            </div>
+
+        `;
+
+
+        enquiriesPanel.appendChild(card);
+
+    }
+
+
+    /* ================= QUOTE CARD ================= */
+
+    function renderQuote(quote) {
+
+        const card =
+            document.createElement("article");
+
+        card.className =
+            "enquiry-card";
+
+
+        card.innerHTML = `
+
+            <div class="enquiry-details">
+
+                <h2>
+                    ${escapeHTML(quote.name)}
+                </h2>
+
+                <p class="enquiry-subject">
+
+                    ${escapeHTML(
+                        quote.service ||
+                        "Quotation request"
+                    )}
+
+                </p>
+
+                <p class="enquiry-body">
+
+                    ${quote.budget
+                        ? "Budget: " +
+                          escapeHTML(
+                              quote.budget
+                          ) +
+                          "<br><br>"
+                        : ""}
+
+                    ${quote.message
+                        ? escapeHTML(
+                            quote.message
+                          )
+                        : "No project details provided."}
+
+                </p>
+
+                <p class="enquiry-contact-line">
+
+                    ${escapeHTML(quote.email)}
+
+                    ${quote.phone
+                        ? " · " +
+                          escapeHTML(quote.phone)
+                        : ""}
+
+                </p>
+
+            </div>
+
+
+            <div class="enquiry-actions">
+
+                <time>
+                    ${formatDate(
+                        quote.createdAt
+                    )}
+                </time>
+
+                ${createStatusSelect(
+                    quote._id,
+                    quote.status,
+                    [
+                        "pending",
+                        "reviewed",
+                        "approved",
+                        "rejected"
+                    ],
+                    "quotes"
+                )}
+
+            </div>
+
+        `;
+
+
+        enquiriesPanel.appendChild(card);
+
+    }
+
+
+    /* ================= STATUS SELECT ================= */
+
+    function createStatusSelect(
+        id,
+        currentStatus,
+        statuses,
+        type
+    ) {
+
+        const options =
+            statuses.map(
+                function(status) {
+
+                    return `
+                        <option
+                            value="${status}"
+                            ${status === currentStatus
+                                ? "selected"
+                                : ""}>
+                            ${
+                                status
+                                    .charAt(0)
+                                    .toUpperCase() +
+                                status.slice(1)
+                            }
+                        </option>
+                    `;
+
+                }
+            ).join("");
+
+
+        return `
+
+            <select
+                class="enquiry-status ${currentStatus}"
+                data-id="${id}"
+                data-type="${type}">
+
+                ${options}
+
+            </select>
+
+        `;
+
+    }
+
+
+    /* ================= DISPLAY ================= */
+
+    function displayCurrentType() {
+
+        enquiriesPanel.innerHTML = "";
+
+        let data = [];
+
+        if (currentType === "contacts") {
+
+            data = contacts;
+
+        }
+
+        if (currentType === "consultations") {
+
+            data = consultations;
+
+        }
+
+        if (currentType === "quotes") {
+
+            data = quotes;
+
+        }
+
+
+        if (!data.length) {
+
+            renderEmptyState(
+                currentType
+            );
+
+            return;
+
+        }
+
+
+        enquiriesPanel.className =
+            "enquiries-panel enquiry-list";
+
+
+        data.forEach(
+            function(item) {
+
+                if (currentType === "contacts") {
+
+                    renderContact(item);
+
+                }
+
+                else if (
+                    currentType === "consultations"
+                ) {
+
+                    renderConsultation(item);
+
+                }
+
+                else {
+
+                    renderQuote(item);
+
+                }
+
+            }
+        );
+
+
+        attachStatusListeners();
+
+    }
+
+
+    /* ================= SWITCH TYPE ================= */
+
+    typeCards.forEach(
+        function(card) {
+
+            card.addEventListener(
+                "click",
+                function() {
+
+                    currentType =
+                        card.dataset.type;
+
+
+                    typeCards.forEach(
+                        function(item) {
+
+                            item.classList.remove(
+                                "active"
+                            );
+
+                        }
+                    );
+
+
+                    card.classList.add(
+                        "active"
+                    );
+
+
+                    const titles = {
+
+                        contacts:
+                            "Contact Queries",
+
+                        consultations:
+                            "Consultations",
+
+                        quotes:
+                            "Quotation Queries"
+
+                    };
+
+
+                    selectedTitle
+                        .querySelector("h2")
+                        .textContent =
+                            titles[currentType];
+
+
+                    displayCurrentType();
+
+                }
+            );
+
+        }
+    );
+
+
+    /* ================= STATUS UPDATE ================= */
+
+    function attachStatusListeners() {
+
+        document
+            .querySelectorAll(
+                ".enquiry-status"
+            )
+            .forEach(
+                function(select) {
+
+                    select.addEventListener(
+                        "change",
+                        function() {
+
+                            updateStatus(
+                                select.dataset.id,
+                                select.value,
+                                select.dataset.type,
+                                select
+                            );
+
+                        }
+                    );
+
+                }
+            );
+
+    }
+
+
+    async function updateStatus(
+        id,
+        status,
+        type,
+        select
+    ) {
+
+        let endpoint = "";
+
+        if (type === "contacts") {
+
+            endpoint =
+                `${API_URL}/api/contacts/${id}`;
+
+        }
+
+        else if (
+            type === "consultations"
+        ) {
+
+            endpoint =
+                `${API_URL}/api/consultations/${id}`;
+
+        }
+
+        else {
+
+            endpoint =
+                `${API_URL}/api/quotes/${id}`;
+
+        }
+
+
+        try {
+
+            const response =
+                await fetch(
+                    endpoint,
+                    {
+                        method: "PUT",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json",
+
+                            "Authorization":
+                                `Bearer ${token}`
+
+                        },
+
+                        body: JSON.stringify({
+                            status
+                        })
+
+                    }
+                );
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    "Failed to update status"
+                );
+
+            }
+
+
+            select.className =
+                `enquiry-status ${status}`;
+
+        }
+
+        catch (error) {
+
+            enquiriesMessage.textContent =
+                error.message;
+
+            await loadAllData();
+
+        }
+
+    }
+
+
+    /* ================= LOAD DATA ================= */
+
+    async function loadAllData() {
+
+        try {
+
+            const [
+                contactsResponse,
+                consultationsResponse,
+                quotesResponse
+            ] = await Promise.all([
+
+                fetch(
+                    `${API_URL}/api/contacts`,
+                    {
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
+                    }
+                ),
+
+                fetch(
+                    `${API_URL}/api/consultations`,
+                    {
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
+                    }
+                ),
+
+                fetch(
+                    `${API_URL}/api/quotes`,
+                    {
+                        headers: {
+                            "Authorization":
+                                `Bearer ${token}`
+                        }
+                    }
+                )
+
+            ]);
+
+
+            if (
+                contactsResponse.status === 401 ||
+                consultationsResponse.status === 401 ||
+                quotesResponse.status === 401
+            ) {
+
+                localStorage.removeItem(
+                    "adminToken"
+                );
+
+                localStorage.removeItem(
+                    "admin"
+                );
+
+                window.location.href =
+                    "../admin-login.html";
+
+                return;
+
+            }
+
+
+            contacts =
+                await contactsResponse.json();
+
+            consultations =
+                await consultationsResponse.json();
+
+            quotes =
+                await quotesResponse.json();
+
+
+            if (
+                !contactsResponse.ok ||
+                !consultationsResponse.ok ||
+                !quotesResponse.ok
+            ) {
+
+                throw new Error(
+                    "Failed to load enquiries"
+                );
+
+            }
+
+
+            document.getElementById(
+                "contactCount"
+            ).textContent =
+                contacts.length;
+
+
+            document.getElementById(
+                "consultationCount"
+            ).textContent =
+                consultations.length;
+
+
+            document.getElementById(
+                "quoteCount"
+            ).textContent =
+                quotes.length;
+
+
+            enquiriesMessage.textContent =
+                "Select an enquiry category above.";
+
+
+            displayCurrentType();
+
+        }
+
+        catch (error) {
+
+            enquiriesMessage.textContent =
+                error.message;
+
+            enquiriesPanel.className =
+                "enquiries-panel enquiries-empty-state";
+
             enquiriesPanel.innerHTML = `
-                <span class="enquiries-empty-icon">✉</span>
-                <h2>No enquiries yet.</h2>
-                <p>New contact requests will appear here immediately.</p>
+
+                <h2>
+                    Unable to load enquiries
+                </h2>
+
+                <p>
+                    Please check that the backend
+                    server is running.
+                </p>
+
             `;
+
         }
 
-        function renderEnquiry(contact) {
-            const card = document.createElement("article");
-            card.className = "enquiry-card";
+    }
 
-            const details = document.createElement("div");
-            details.className = "enquiry-details";
 
-            const name = document.createElement("h2");
-            name.textContent = contact.name;
+    /* ================= HTML SAFETY ================= */
 
-            const subject = document.createElement("p");
-            subject.className = "enquiry-subject";
-            subject.textContent = contact.subject || "Website enquiry";
+    function escapeHTML(value) {
 
-            const message = document.createElement("p");
-            message.className = "enquiry-body";
-            message.textContent = contact.message;
+        if (value === null ||
+            value === undefined) {
 
-            const contactLine = document.createElement("p");
-            contactLine.className = "enquiry-contact-line";
-            contactLine.textContent = `${contact.email}${contact.phone ? ` · ${contact.phone}` : ""}`;
+            return "";
 
-            details.append(name, subject, message, contactLine);
-
-            const actions = document.createElement("div");
-            actions.className = "enquiry-actions";
-
-            const date = document.createElement("time");
-            date.textContent = formatDate(contact.createdAt);
-
-            const status = document.createElement("select");
-            status.className = `enquiry-status ${contact.status}`;
-            ["unread", "read", "replied"].forEach((value) => {
-                const option = new Option(value[0].toUpperCase() + value.slice(1), value);
-                option.selected = value === contact.status;
-                status.appendChild(option);
-            });
-
-            status.addEventListener("change", () => updateStatus(contact._id, status.value, status));
-            actions.append(date, status);
-            card.append(details, actions);
-            return card;
         }
 
-        async function loadEnquiries() {
-            try {
-                const response = await fetch(`${API_URL}/api/contacts`, {
-                    headers: { "Authorization": `Bearer ${token}` }
-                });
-                const contacts = await response.json();
 
-                if (response.status === 401) {
-                    localStorage.removeItem("adminToken");
-                    localStorage.removeItem("admin");
-                    window.location.href = "../admin-login.html";
-                    return;
+        return String(value)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* ================= BACK BUTTON ================= */
+
+    backButton.addEventListener(
+        "click",
+        function() {
+
+            typeCards.forEach(
+                function(card) {
+
+                    card.style.display =
+                        "block";
+
                 }
+            );
 
-                if (!response.ok) {
-                    throw new Error(contacts.message || "Failed to load enquiries");
-                }
 
-                enquiriesMessage.textContent = `${contacts.length} entr${contacts.length === 1 ? "y" : "ies"}`;
+            backButton.style.display =
+                "none";
 
-                if (!contacts.length) {
-                    renderEmptyState();
-                    return;
-                }
+        }
+    );
 
-                enquiriesPanel.className = "enquiries-panel enquiry-list";
-                enquiriesPanel.replaceChildren(...contacts.map(renderEnquiry));
-            } catch (error) {
-                enquiriesMessage.textContent = error.message;
-                enquiriesPanel.className = "enquiries-panel enquiries-empty-state";
-                enquiriesPanel.innerHTML = "<p>We could not load enquiries right now.</p>";
+
+    /* ================= LOGOUT ================= */
+
+    document
+        .getElementById("logoutButton")
+        .addEventListener(
+            "click",
+            function() {
+
+                localStorage.removeItem(
+                    "adminToken"
+                );
+
+                localStorage.removeItem(
+                    "admin"
+                );
+
+                window.location.href =
+                    "../admin-login.html";
+
             }
-        }
+        );
 
-        async function updateStatus(id, status, select) {
-            try {
-                const response = await fetch(`${API_URL}/api/contacts/${id}`, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                        "Authorization": `Bearer ${token}`
-                    },
-                    body: JSON.stringify({ status })
-                });
 
-                if (!response.ok) {
-                    throw new Error("Failed to update enquiry status");
-                }
+    /* ================= START ================= */
 
-                select.className = `enquiry-status ${status}`;
-            } catch (error) {
-                enquiriesMessage.textContent = error.message;
-                await loadEnquiries();
-            }
-        }
+    loadAllData();
 
-        document.getElementById("logoutButton").addEventListener("click", () => {
-            localStorage.removeItem("adminToken");
-            localStorage.removeItem("admin");
-            window.location.href = "../admin-login.html";
-        });
+    window.setInterval(
+        loadAllData,
+        15000
+    );
 
-        loadEnquiries();
-        window.setInterval(loadEnquiries, 15000);
-    </script>
+</script>
+```
 
 </body>
 
