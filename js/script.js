@@ -21,7 +21,7 @@ const serviceData = {
             "We design modular kitchens around your lifestyle, available space and storage requirements. From layout planning and material selection to customized cabinets, countertops and smart accessories, every element is planned to create a practical and beautiful kitchen.",
 
         image:
-            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=1000&q=85",
+            "images/services/ModularKitchen1.jpeg",
 
         features: [
             "Modern kitchen layouts",
@@ -35,9 +35,9 @@ const serviceData = {
             "products.html?category=kitchen",
 
         designs: [
-            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80"
+            "images/services/ModularKitchen2.jpeg",
+            "images/services/ModularKitchen3.jpeg",
+            "images/services/ModularKitchen4.jpeg"
         ]
     },
 
@@ -56,7 +56,7 @@ const serviceData = {
             "Our wardrobe solutions are designed according to your room size, storage needs and preferred style. We offer sliding, hinged and walk-in wardrobes with carefully planned compartments, finishes and accessories to keep your belongings organized.",
 
         image:
-            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1000&q=85",
+            "images/services/Wardrobe4.jpeg",
 
         features: [
             "Sliding wardrobes",
@@ -70,9 +70,9 @@ const serviceData = {
             "products.html?category=wardrobes",
 
         designs: [
-            "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1558997519-83ea9252edf8?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80"
+            "images/services/Wardrobe1.jpeg",
+            "images/services/Wardrobe2.jpeg",
+            "images/services/Wardrobe3.jpeg"
         ]
     },
 
@@ -91,7 +91,7 @@ const serviceData = {
             "We create customized TV units that complement your living room while providing practical storage for entertainment devices, books and décor. Our designs include wall-mounted units, display shelves, cabinets and concealed storage options.",
 
         image:
-            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85",
+            "images/services/TVUnit1.jpeg",
 
         features: [
             "Wall-mounted TV units",
@@ -105,9 +105,9 @@ const serviceData = {
             "gallery.html?category=tv-units",
 
         designs: [
-            "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=800&q=80"
+            "images/services/TVUnit2.jpeg",
+            "images/services/TVUnit3.jpeg",
+            "images/services/TVUnit4.jpeg"
         ]
     },
 
@@ -126,7 +126,7 @@ const serviceData = {
             "Our interior design service covers the complete transformation of your space, from concept and space planning to materials, furniture, lighting and final execution. We work closely with clients to create interiors that reflect their personality and lifestyle.",
 
         image:
-            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=85",
+            "images/services/Interior3.jpeg",
 
         features: [
             "Space planning",
@@ -140,9 +140,9 @@ const serviceData = {
             "projects.html?category=interiors",
 
         designs: [
-            "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?auto=format&fit=crop&w=800&q=80"
+            "images/services/Interior2.jpeg",
+            "images/services/Interior1.jpeg",
+            "images/services/Interior4.jpeg"
         ]
     },
 
@@ -161,7 +161,7 @@ const serviceData = {
             "We design and create furniture pieces according to your available space and functional requirements. From sofas and beds to dining furniture and storage units, our solutions focus on comfort, durability and visual harmony with your interiors.",
 
         image:
-            "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=1000&q=85",
+            "images/services/Furniture2.jpeg",
 
         features: [
             "Sofas and seating",
@@ -175,9 +175,9 @@ const serviceData = {
             "products.html?category=furniture",
 
         designs: [
-            "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1618220179428-22790b461013?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1567016432779-094069958ea5?auto=format&fit=crop&w=800&q=80"
+            "images/services/Furniture1.jpeg",
+            "images/services/Furniture3.jpeg",
+            "images/services/Furniture4.jpeg"
         ]
     },
 
@@ -196,7 +196,7 @@ const serviceData = {
             "Our kitchen trolley and accessory solutions make kitchen storage more convenient and accessible. We provide practical options such as pull-out baskets, bottle units, corner solutions, tall units and organizers that make better use of available space.",
 
         image:
-            "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=1000&q=85",
+            "images/services/KitchenTrolleys1.jpeg",
 
         features: [
             "Pull-out baskets",
@@ -210,9 +210,9 @@ const serviceData = {
             "products.html?category=kitchen-trolleys",
 
         designs: [
-            "https://images.unsplash.com/photo-1556912167-f556f1f39fdf?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=800&q=80",
-            "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?auto=format&fit=crop&w=800&q=80"
+            "images/services/KitchenTrolleys2.jpeg",
+            "images/services/KitchenTrolleys3.jpeg",
+            "images/services/KitchenTrolleys4.jpeg"
         ]
     }
 
