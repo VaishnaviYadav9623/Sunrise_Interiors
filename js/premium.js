@@ -310,7 +310,6 @@
                     <ul>
                         <li><a href="about.html">About Us</a></li>
                         <li><a href="projects.html">Our Projects</a></li>
-                        <li><a href="gallery.html">Gallery</a></li>
                         <li><a href="consultation.html">Book Consultation</a></li>
                         <li><a href="contact.html">Contact Us</a></li>
                     </ul>

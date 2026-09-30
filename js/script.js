@@ -102,7 +102,7 @@ const serviceData = {
         ],
 
         productLink:
-            "gallery.html?category=tv-units",
+            "products.html",
 
         designs: [
             "images/services/TVUnit2.jpeg",

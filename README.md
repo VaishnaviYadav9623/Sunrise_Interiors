@@ -9,7 +9,6 @@ A modern full-stack web application developed for Sunrise Interiors to showcase 
 - 🏠 Modern and responsive website design
 - 🛋️ Furniture catalog with categories
 - 🎨 Interior design project showcase
-- 📸 Gallery of completed work
 - 📝 Online consultation booking
 - 💰 Quote request system
 - 📞 Contact form
@@ -40,7 +39,6 @@ Sunrise_Interiors/
 ├── 📄 about.html
 ├── 📄 services.html
 ├── 📄 products.html
-├── 📄 gallery.html
 ├── 📄 projects.html
 ├── 📄 contact.html
 ├── 📄 quote.html
