@@ -1,0 +1,81 @@
+:root {
+  /* HSL Color System - Light Theme Default */
+  --hue-primary: 220;
+  --hue-accent: 18;
+  --hue-neutral: 35;
+
+  /* Color Palette - Luxury Warm Light */
+  --bg-main: HSL(var(--hue-neutral), 25%, 97%);
+  --bg-surface: HSL(var(--hue-neutral), 30%, 100%);
+  --bg-surface-elevated: HSL(var(--hue-neutral), 20%, 94%);
+  --bg-glass: rgba(255, 255, 255, 0.75);
+  --bg-glass-border: rgba(255, 255, 255, 0.6);
+
+  --text-main: HSL(var(--hue-primary), 30%, 12%);
+  --text-muted: HSL(var(--hue-primary), 12%, 45%);
+  --text-light: HSL(var(--hue-primary), 8%, 65%);
+
+  --border-color: HSL(var(--hue-neutral), 15%, 88%);
+  --border-focus: HSL(var(--hue-accent), 70%, 55%);
+
+  /* Accent Colors */
+  --clr-accent-terracotta: HSL(18, 68%, 56%);
+  --clr-accent-terracotta-hover: HSL(18, 72%, 48%);
+  --clr-accent-emerald: HSL(155, 40%, 35%);
+  --clr-accent-gold: HSL(42, 75%, 52%);
+  --clr-accent-gold-soft: HSL(42, 60%, 92%);
+
+  /* Dark Overlay Surface */
+  --overlay-bg: rgba(13, 15, 18, 0.65);
+
+  /* Typography Tokens */
+  --font-family-heading: 'Outfit', sans-serif;
+  --font-family-body: 'Plus Jakarta Sans', sans-serif;
+
+  /* Font Weights */
+  --fw-light: 300;
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 2px 8px rgba(13, 15, 18, 0.04);
+  --shadow-md: 0 8px 24px rgba(13, 15, 18, 0.08);
+  --shadow-lg: 0 16px 40px rgba(13, 15, 18, 0.12);
+  --shadow-glow: 0 10px 30px rgba(217, 107, 67, 0.25);
+
+  /* Transitions & Easing */
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Border Radii */
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Layout Spacing */
+  --container-max-width: 1280px;
+  --header-height: 80px;
+}
+
+/* Dark Theme Overrides */
+[data-theme="dark"] {
+  --bg-main: HSL(220, 20%, 8%);
+  --bg-surface: HSL(220, 18%, 12%);
+  --bg-surface-elevated: HSL(220, 16%, 16%);
+  --bg-glass: rgba(22, 26, 33, 0.8);
+  --bg-glass-border: rgba(255, 255, 255, 0.08);
+
+  --text-main: HSL(35, 30%, 96%);
+  --text-muted: HSL(220, 12%, 70%);
+  --text-light: HSL(220, 10%, 50%);
+
+  --border-color: HSL(220, 15%, 22%);
+
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.45);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.6);
+}
