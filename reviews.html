@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Reviews | Sunrise Interior Studio</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/reviews.css">
+</head>
+<body>
+    <header class="header">
+        <a class="logo" href="index.html" aria-label="Sunrise Interior Studio home">
+            <div class="logo-sun">☼</div>
+            <div class="logo-text"><h2>SUNRISE</h2><span>INTERIOR STUDIO</span></div>
+        </a>
+        <nav class="navbar">
+            <a href="index.html">Home</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="projects.html">Projects</a>
+            <a href="reviews.html" class="active">Reviews</a>
+            <a href="contact.html">Contact Us</a>
+        </nav>
+    </header>
+
+    <main class="reviews-page">
+        <section class="reviews-hero">
+            <p class="section-label">CUSTOMER STORIES</p>
+            <h1>Real homes. <span>Real experiences.</span></h1>
+            <p>Share your experience with Sunrise Interior Studio. You can include photos of your completed space.</p>
+        </section>
+
+        <section class="review-form-section" aria-labelledby="reviewFormTitle">
+            <div class="review-form-heading">
+                <p class="section-label">YOUR EXPERIENCE</p>
+                <h2 id="reviewFormTitle">Write a review</h2>
+                <p>Reviews are checked before being published on our website.</p>
+            </div>
+            <form id="customerReviewForm" enctype="multipart/form-data">
+                <label for="reviewName">Your name</label>
+                <input id="reviewName" name="name" type="text" maxlength="80" required placeholder="Enter your name">
+
+                <label for="reviewProject">Project type</label>
+                <select id="reviewProject" name="projectType" required>
+                    <option value="">Select your project</option>
+                    <option>Modular Kitchen</option>
+                    <option>Living Room</option>
+                    <option>Bedroom / Wardrobe</option>
+                    <option>Full Home Interior</option>
+                    <option>Office Interior</option>
+                    <option>Other</option>
+                </select>
+
+                <label>Overall rating</label>
+                <div class="rating-input" role="radiogroup" aria-label="Overall rating">
+                    <label><input type="radio" name="rating" value="1" required><span>★</span><small>1</small></label>
+                    <label><input type="radio" name="rating" value="2"><span>★</span><small>2</small></label>
+                    <label><input type="radio" name="rating" value="3"><span>★</span><small>3</small></label>
+                    <label><input type="radio" name="rating" value="4"><span>★</span><small>4</small></label>
+                    <label><input type="radio" name="rating" value="5"><span>★</span><small>5</small></label>
+                </div>
+
+                <label for="reviewMessage">Your review</label>
+                <textarea id="reviewMessage" name="message" rows="5" maxlength="1200" required placeholder="Tell us about your experience..."></textarea>
+
+                <label for="reviewPhotos">Photos of your space (optional, up to 4)</label>
+                <input id="reviewPhotos" name="photos" type="file" accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" multiple>
+                <p class="review-help">JPG, PNG or WebP · max 5 MB per photo</p>
+                <div id="photoPreview" class="photo-preview"></div>
+
+                <button class="review-submit" type="submit">Submit review <span>↗</span></button>
+                <p id="reviewFormStatus" class="review-status" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-left"><p>© 2026 Sunrise Interior Studio. All Rights Reserved.</p></div>
+        <div class="footer-right"><a href="index.html">Home</a><span>|</span><a href="contact.html">Contact</a></div>
+    </footer>
+    <script src="js/reviews-form.js"></script>
+</body>
+</html>

@@ -319,15 +319,15 @@
                     <h4>Contact</h4>
                     <div class="footer-contact-item">
                         <span class="fc-icon">📍</span>
-                        <span>Sunrise Interior Studio,<br>Your City, India</span>
+                        <span>Sunrise Interior Studio,<br>Nashik, India</span>
                     </div>
                     <div class="footer-contact-item">
                         <span class="fc-icon">📞</span>
-                        <span>+91 98765 43210</span>
+                        <span>+91 9422945165</span>
                     </div>
                     <div class="footer-contact-item">
                         <span class="fc-icon">✉️</span>
-                        <span>hello@sunriseinterior.in</span>
+                        <span>sunrisekitchenworld@gmail.com</span>
                     </div>
                 </div>
             </div>

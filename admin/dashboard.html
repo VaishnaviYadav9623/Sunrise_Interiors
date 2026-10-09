@@ -1,10 +1,9 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Admin Dashboard - Sunrise Interior Studio</title>
@@ -12,7 +11,6 @@
     <link rel="stylesheet" href="../css/style.css">
 
     <style>
-
         .admin-dashboard {
             padding: 40px;
             max-width: 1200px;
@@ -81,17 +79,17 @@
         #dashboardMessage {
             margin-bottom: 20px;
         }
-
     </style>
-
 </head>
-
 
 <body class="admin-dashboard-page">
 
     <div class="admin-shell">
+
         <aside class="admin-sidebar">
-            <a href="dashboard.html" class="admin-brand" aria-label="Sunrise dashboard">
+
+            <a href="dashboard.html" class="admin-brand"
+               aria-label="Sunrise dashboard">
                 <span class="admin-brand-mark">S</span>
                 <span>
                     <strong>Sunrise</strong>
@@ -100,40 +98,55 @@
             </a>
 
             <nav class="admin-nav" aria-label="Admin navigation">
+
                 <a href="dashboard.html" class="active">
                     <span class="admin-nav-icon">▥</span>
                     Overview
                 </a>
+
                 <a href="products.html">
                     <span class="admin-nav-icon">◇</span>
                     Products
                 </a>
+
                 <a href="categories.html">
                     <span class="admin-nav-icon">⊞</span>
                     Categories
                 </a>
+
                 <a href="projects.html">
                     <span class="admin-nav-icon">▧</span>
                     Projects
                 </a>
+
+                <a href="reviews.html">
+                    <span class="admin-nav-icon">☆</span>
+                    Customer Reviews
+                </a>
+
                 <a href="enquiries.html">
                     <span class="admin-nav-icon">✉</span>
                     Enquiries
                 </a>
+
             </nav>
 
             <div class="admin-sidebar-footer">
                 <a href="../index.html">Visit website</a>
+
                 <button id="logoutBtn" type="button">
                     <span class="admin-nav-icon">↪</span>
                     Sign out
                 </button>
             </div>
+
         </aside>
 
         <div class="admin-main">
+
             <header class="admin-topbar">
                 <p>Sunrise / Overview</p>
+
                 <div class="admin-account">
                     <span id="welcomeMessage">Sunrise Admin</span>
                     <span class="admin-account-mark">S</span>
@@ -141,251 +154,267 @@
             </header>
 
             <main class="admin-content">
+
                 <div class="admin-content-heading">
                     <div>
                         <p class="admin-eyebrow">STUDIO OVERVIEW</p>
                         <h1>Everything, at a glance.</h1>
                     </div>
-                    <a href="../index.html" class="admin-view-button">View website</a>
+
+                    <a href="../index.html" class="admin-view-button">
+                        View website
+                    </a>
                 </div>
 
-                <p id="dashboardMessage" class="admin-dashboard-message">Loading dashboard...</p>
+                <p id="dashboardMessage" class="admin-dashboard-message"
+                   role="status">
+                    Loading dashboard...
+                </p>
 
-                <section class="admin-overview-grid" aria-label="Studio statistics">
+                <section class="admin-overview-grid"
+                         aria-label="Studio statistics">
+
                     <a href="products.html" class="admin-stat-card">
                         <span class="admin-card-icon">◇</span>
                         <span class="admin-card-label">Products</span>
                         <strong id="productsCount">0</strong>
-                        <span class="admin-card-link">Manage <span>→</span></span>
+                        <span class="admin-card-link">
+                            Manage <span>→</span>
+                        </span>
                     </a>
 
-                    <a href="categories.html" class="admin-stat-card featured">
+                    <a href="categories.html"
+                       class="admin-stat-card featured">
                         <span class="admin-card-icon">⊞</span>
                         <span class="admin-card-label">Categories</span>
                         <strong id="categoriesCount">0</strong>
-                        <span class="admin-card-link">Manage <span>→</span></span>
+                        <span class="admin-card-link">
+                            Manage <span>→</span>
+                        </span>
                     </a>
 
                     <a href="projects.html" class="admin-stat-card">
                         <span class="admin-card-icon">▧</span>
                         <span class="admin-card-label">Projects</span>
                         <strong id="projectsCount">0</strong>
-                        <span class="admin-card-link">Manage <span>→</span></span>
+                        <span class="admin-card-link">
+                            Manage <span>→</span>
+                        </span>
+                    </a>
+
+                    <a href="reviews.html" class="admin-stat-card">
+                        <span class="admin-card-icon">☆</span>
+                        <span class="admin-card-label">Pending Reviews</span>
+                        <strong id="pendingReviewsCount">0</strong>
+                        <span class="admin-card-link">
+                            Review now <span>→</span>
+                        </span>
                     </a>
 
                     <a href="enquiries.html" class="admin-stat-card">
                         <span class="admin-card-icon">✉</span>
                         <span class="admin-card-label">New enquiries</span>
                         <strong id="contactsCount">0</strong>
-                        <span class="admin-card-link">Manage <span>→</span></span>
+                        <span class="admin-card-link">
+                            Manage <span>→</span>
+                        </span>
                     </a>
+
                 </section>
 
                 <section class="admin-focus-panel">
                     <div>
-                        <p class="admin-eyebrow">TODAY&apos;S FOCUS</p>
+                        <p class="admin-eyebrow">TODAY'S FOCUS</p>
                         <h2>Keep the portfolio fresh.</h2>
-                        <p>Upload newly completed projects, mark standout products as featured, and reply to new client enquiries promptly.</p>
+                        <p>
+                            Upload newly completed projects, mark standout
+                            products as featured, and reply to new client
+                            enquiries promptly.
+                        </p>
                     </div>
+
                     <span class="admin-focus-icon">▱</span>
                 </section>
 
-                <section class="admin-secondary-stats" aria-label="Pending requests">
-                    <div><strong id="quotesCount">0</strong><span>Quotes</span></div>
-                    <div><strong id="consultationsCount">0</strong><span>Consultations</span></div>
-                    <div><strong id="pendingConsultationsCount">0</strong><span>Pending consultations</span></div>
-                    <div><strong id="pendingQuotesCount">0</strong><span>Pending quotes</span></div>
-                    <div><strong id="unreadContactsCount">0</strong><span>Unread enquiries</span></div>
+                <section class="admin-secondary-stats"
+                         aria-label="Pending requests">
+
+                    <div>
+                        <strong id="quotesCount">0</strong>
+                        <span>Quotes</span>
+                    </div>
+
+                    <div>
+                        <strong id="consultationsCount">0</strong>
+                        <span>Consultations</span>
+                    </div>
+
+                    <div>
+                        <strong id="pendingConsultationsCount">0</strong>
+                        <span>Pending consultations</span>
+                    </div>
+
+                    <div>
+                        <strong id="pendingQuotesCount">0</strong>
+                        <span>Pending quotes</span>
+                    </div>
+
+                    <div>
+                        <strong id="unreadContactsCount">0</strong>
+                        <span>Unread enquiries</span>
+                    </div>
+
                 </section>
+
             </main>
         </div>
     </div>
 
-
     <script>
-
         const API_URL = "http://localhost:5000";
 
-
-        // Check if admin is logged in
+        // Check whether the admin is logged in
         const token = localStorage.getItem("adminToken");
 
-        const adminData =
-            localStorage.getItem("admin");
-
+        const adminData = localStorage.getItem("admin");
 
         if (!token) {
-
-            window.location.href =
-                "../admin-login.html";
-
+            window.location.href = "../admin-login.html";
         }
 
-
-        // Display admin name
+        // Display admin name safely
         if (adminData) {
+            try {
+                const admin = JSON.parse(adminData);
 
-            const admin =
-                JSON.parse(adminData);
-
-            document.getElementById("welcomeMessage").innerText =
-                admin.name || "Sunrise Admin";
-
+                document.getElementById("welcomeMessage").innerText =
+                    admin.name || "Sunrise Admin";
+            } catch (error) {
+                localStorage.removeItem("admin");
+            }
         }
 
-
-        // Load dashboard statistics
+        // Load the main dashboard statistics
         async function loadDashboard() {
-
-            const message =
-                document.getElementById(
-                    "dashboardMessage"
-                );
+            const message = document.getElementById("dashboardMessage");
 
             try {
-
-                const response =
-                    await fetch(
-                        `${API_URL}/api/dashboard/stats`,
-                        {
-                            method: "GET",
-
-                            headers: {
-                                "Authorization":
-                                    `Bearer ${token}`
-                            }
+                const response = await fetch(
+                    `${API_URL}/api/dashboard/stats`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Authorization": `Bearer ${token}`
                         }
-                    );
-
-
-                const data =
-                    await response.json();
-
-
-                if (!response.ok) {
-
-                    if (response.status === 401) {
-
-                        localStorage.removeItem(
-                            "adminToken"
-                        );
-
-                        localStorage.removeItem(
-                            "admin"
-                        );
-
-                        window.location.href =
-                            "../admin-login.html";
-
-                        return;
-
                     }
+                );
 
-                    throw new Error(
-                        data.message ||
-                        "Failed to load dashboard"
-                    );
+                const data = await response.json();
 
+                if (response.status === 401) {
+                    logout();
+                    return;
                 }
 
+                if (!response.ok) {
+                    throw new Error(
+                        data.message || "Failed to load dashboard."
+                    );
+                }
 
-                document.getElementById(
-                    "productsCount"
-                ).innerText =
-                    data.products;
+                document.getElementById("productsCount").innerText =
+                    data.products ?? 0;
 
+                document.getElementById("categoriesCount").innerText =
+                    data.categories ?? 0;
 
-                document.getElementById(
-                    "categoriesCount"
-                ).innerText =
-                    data.categories;
+                document.getElementById("projectsCount").innerText =
+                    data.projects ?? 0;
 
+                document.getElementById("consultationsCount").innerText =
+                    data.consultations ?? 0;
 
-                document.getElementById(
-                    "projectsCount"
-                ).innerText =
-                    data.projects;
+                document.getElementById("quotesCount").innerText =
+                    data.quotes ?? 0;
 
-
-                document.getElementById(
-                    "consultationsCount"
-                ).innerText =
-                    data.consultations;
-
-
-                document.getElementById(
-                    "quotesCount"
-                ).innerText =
-                    data.quotes;
-
-
-                document.getElementById(
-                    "contactsCount"
-                ).innerText =
-                    data.contacts;
-
+                document.getElementById("contactsCount").innerText =
+                    data.contacts ?? 0;
 
                 document.getElementById(
                     "pendingConsultationsCount"
-                ).innerText =
-                    data.pendingConsultations;
+                ).innerText = data.pendingConsultations ?? 0;
 
+                document.getElementById("pendingQuotesCount").innerText =
+                    data.pendingQuotes ?? 0;
 
-                document.getElementById(
-                    "pendingQuotesCount"
-                ).innerText =
-                    data.pendingQuotes;
+                document.getElementById("unreadContactsCount").innerText =
+                    data.unreadContacts ?? 0;
 
+                message.innerText = "Dashboard loaded successfully.";
 
-                document.getElementById(
-                    "unreadContactsCount"
-                ).innerText =
-                    data.unreadContacts;
-
-
+            } catch (error) {
                 message.innerText =
-                    "Dashboard loaded successfully.";
-
+                    "Could not load dashboard statistics: " + error.message;
             }
-
-
-            catch (error) {
-
-                message.innerText =
-                    error.message;
-
-            }
-
         }
 
+        // Load pending customer review count independently
+        async function loadPendingReviews() {
+            const countElement =
+                document.getElementById("pendingReviewsCount");
 
-        // Logout
-        document.getElementById(
-            "logoutBtn"
-        ).addEventListener(
-            "click",
-            function() {
-
-                localStorage.removeItem(
-                    "adminToken"
+            try {
+                const response = await fetch(
+                    `${API_URL}/api/reviews/admin/pending`,
+                    {
+                        method: "GET",
+                        headers: {
+                            "Authorization": `Bearer ${token}`
+                        }
+                    }
                 );
 
-                localStorage.removeItem(
-                    "admin"
-                );
+                if (response.status === 401) {
+                    logout();
+                    return;
+                }
 
-                window.location.href =
-                    "../admin-login.html";
+                if (!response.ok) {
+                    throw new Error("Could not load pending reviews.");
+                }
 
+                const reviews = await response.json();
+
+                countElement.innerText = Array.isArray(reviews)
+                    ? reviews.length
+                    : 0;
+
+            } catch (error) {
+                console.error("Pending reviews error:", error);
+                countElement.innerText = "—";
+                countElement.title =
+                    "Could not load review count. Check the backend and reviews API.";
             }
+        }
+
+        // Admin logout
+        function logout() {
+            localStorage.removeItem("adminToken");
+            localStorage.removeItem("admin");
+            window.location.href = "../admin-login.html";
+        }
+
+        document.getElementById("logoutBtn").addEventListener(
+            "click",
+            logout
         );
 
-
-        loadDashboard();
-
+        // Start loading dashboard data
+        if (token) {
+            loadDashboard();
+            loadPendingReviews();
+        }
     </script>
 
-
 </body>
-
 </html>
