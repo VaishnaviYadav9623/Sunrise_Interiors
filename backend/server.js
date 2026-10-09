@@ -1,9 +1,8 @@
 require("dotenv").config();
 
-const express = require("express");
-const cors = require("cors");
-
-const connectDB = require("./db");
+const express = require("express"); //express creates the backend server and API routes.
+const cors = require("cors"); //cors allows your frontend to communicate with the backend from a different origin, subject to CORS configuration.
+const connectDB = require("./db"); //connectDB imports the function responsible for connecting to MongoDB.
 
 const authRoutes =
     require("./routes/auth");
