@@ -15,6 +15,7 @@ const quoteRoutes = require("./routes/quotes");
 const contactRoutes = require("./routes/contacts");
 const dashboardRoutes = require("./routes/dashboard");
 const reviewRoutes = require("./routes/reviews");
+const journeyRoutes = require("./routes/journey");
 
 const app = express();
 
@@ -55,6 +56,7 @@ app.get("/api/test-db", (req, res) => {
 
 // API routes
 app.use("/api/reviews", reviewRoutes);
+app.use("/api/journey", journeyRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/categories", categoryRoutes);

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Journey - Sunrise Interior Studio</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <style>
+        .journey-admin-list {
+            display: grid;
+            gap: 18px;
+            margin: 24px 0;
+        }
+
+        .journey-admin-row {
+            display: grid;
+            grid-template-columns: 100px minmax(0, 1fr) auto;
+            align-items: start;
+            gap: 18px;
+            padding: 20px 24px;
+            background: #fff;
+            border: 1px solid #e8e4dd;
+            border-radius: 8px;
+        }
+
+        .journey-admin-year {
+            color: var(--orange);
+            font-weight: 700;
+        }
+
+        .journey-admin-details h3 {
+            margin: 0 0 7px;
+        }
+
+        .journey-admin-details p {
+            margin: 0;
+            color: #666;
+            line-height: 1.5;
+            white-space: pre-wrap;
+        }
+
+        .journey-row-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        .journey-row-actions .journey-button {
+            padding: 8px 12px;
+        }
+
+        .journey-form-panel {
+            margin: 24px 0;
+            padding: 24px;
+            background: #fff;
+            border: 1px solid #e8e4dd;
+            border-radius: 8px;
+        }
+
+        .journey-form-panel[hidden] {
+            display: none;
+        }
+
+        .journey-form {
+            display: grid;
+            grid-template-columns: 170px minmax(0, 1fr);
+            gap: 16px;
+        }
+
+        .journey-form label {
+            display: grid;
+            gap: 7px;
+            color: #454545;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .journey-form input,
+        .journey-form textarea {
+            width: 100%;
+            padding: 11px 12px;
+            border: 1px solid #d5d1c9;
+            border-radius: 5px;
+            font: inherit;
+        }
+
+        .journey-form textarea {
+            min-height: 92px;
+            resize: vertical;
+        }
+
+        .journey-form .description-field,
+        .journey-form-actions {
+            grid-column: 1 / -1;
+        }
+
+        .journey-form-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .journey-button {
+            padding: 11px 16px;
+            border: 0;
+            border-radius: 5px;
+            background: var(--orange);
+            color: #fff;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 600;
+        }
+
+        .journey-button:disabled {
+            cursor: wait;
+            opacity: 0.65;
+        }
+
+        .journey-button.secondary {
+            background: #292929;
+        }
+
+        .journey-button.remove {
+            background: #a83232;
+        }
+
+        .journey-button.edit {
+            background: #292929;
+        }
+
+        #journeyStatus {
+            min-height: 1.5em;
+            margin: 12px 0;
+            color: #555;
+        }
+
+        @media (max-width: 600px) {
+            .journey-admin-row {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-form {
+                grid-template-columns: 1fr;
+            }
+
+            .journey-form .description-field,
+            .journey-form-actions {
+                grid-column: 1;
+            }
+        }
+    </style>
+</head>
+
+<body class="admin-dashboard-page">
+    <div class="admin-shell">
+        <aside class="admin-sidebar">
+            <a href="dashboard.html" class="admin-brand" aria-label="Sunrise dashboard">
+                <span class="admin-brand-mark">S</span>
+                <span>
+                    <strong>Sunrise</strong>
+                    <small>INTERIOR STUDIO</small>
+                </span>
+            </a>
+
+            <nav class="admin-nav" aria-label="Admin navigation">
+                <a href="dashboard.html"><span class="admin-nav-icon">▥</span>Overview</a>
+                <a href="products.html"><span class="admin-nav-icon">◇</span>Products</a>
+                <a href="categories.html"><span class="admin-nav-icon">⊞</span>Categories</a>
+                <a href="projects.html"><span class="admin-nav-icon">▧</span>Projects</a>
+                <a href="reviews.html"><span class="admin-nav-icon">☆</span>Customer Reviews</a>
+                <a href="enquiries.html"><span class="admin-nav-icon">✉</span>Enquiries</a>
+                <a href="journey.html" class="active"><span class="admin-nav-icon">⌖</span>Journey</a>
+            </nav>
+
+            <div class="admin-sidebar-footer">
+                <div class="admin-sidebar-profile">
+                    <strong id="sidebarAdminName">Sunrise Admin</strong>
+                    <span id="sidebarAdminEmail">Email unavailable</span>
+                </div>
+                <button id="logoutButton" type="button">
+                    <span class="admin-nav-icon">↪</span>
+                    Sign out
+                </button>
+            </div>
+        </aside>
+
+        <div class="admin-main">
+            <header class="admin-topbar">
+                <p>Sunrise / Journey</p>
+                <div class="admin-account">
+                    <span id="welcomeMessage">Sunrise Admin</span>
+                    <span class="admin-account-mark">S</span>
+                </div>
+            </header>
+
+            <main class="admin-content">
+                <div class="admin-content-heading">
+                    <div>
+                        <p class="admin-eyebrow">ABOUT THE STUDIO</p>
+                        <h1>Our Journey</h1>
+                    </div>
+                    <div class="journey-editor-actions">
+                        <a href="../about.html" class="admin-view-button">View website</a>
+                        <button class="journey-button" id="addEntryButton" type="button">
+                            Add milestone
+                        </button>
+                    </div>
+                </div>
+
+                <p id="journeyStatus" role="status">Loading journey milestones...</p>
+
+                <section id="journeyFormPanel" class="journey-form-panel" hidden>
+                    <h2 id="formTitle">Add milestone</h2>
+                    <form id="journeyForm" class="journey-form">
+                        <label>
+                            Year
+                            <input type="text" name="year" inputmode="numeric"
+                                pattern="\d{4}\+?" maxlength="5" placeholder="e.g. 2024"
+                                title="Enter a four-digit year, optionally followed by +."
+                                required>
+                        </label>
+                        <label>
+                            Milestone title
+                            <input type="text" name="title" maxlength="100" required>
+                        </label>
+                        <label class="description-field">
+                            Description
+                            <textarea name="description" maxlength="1000"
+                                rows="3" required></textarea>
+                        </label>
+                        <div class="journey-form-actions">
+                            <button class="journey-button" id="saveJourneyButton" type="submit">
+                                Save milestone
+                            </button>
+                            <button class="journey-button secondary" id="cancelFormButton" type="button">
+                                Cancel
+                            </button>
+                        </div>
+                    </form>
+                </section>
+
+                <section aria-labelledby="journeyListTitle">
+                    <div class="catalogue-list-heading">
+                        <div>
+                            <h2 id="journeyListTitle">All milestones</h2>
+                        </div>
+                        <span id="journeyCount" class="catalogue-count"></span>
+                    </div>
+                    <div id="journeyEntries" class="journey-admin-list"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <script src="../js/admin-layout.js"></script>
+    <script>
+        const API = "http://localhost:5000/api/journey";
+        const token = localStorage.getItem("adminToken");
+        const journeyEntries = document.getElementById("journeyEntries");
+        const journeyStatus = document.getElementById("journeyStatus");
+        const form = document.getElementById("journeyForm");
+        const formPanel = document.getElementById("journeyFormPanel");
+        const saveButton = document.getElementById("saveJourneyButton");
+        const formTitle = document.getElementById("formTitle");
+        let entries = [];
+        let editingIndex = -1;
+
+        function setStatus(message) {
+            journeyStatus.textContent = message;
+        }
+
+        async function apiRequest(url, options = {}) {
+            const response = await fetch(url, {
+                ...options,
+                headers: {
+                    "Content-Type": "application/json",
+                    ...(options.headers || {}),
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            const data = await response.json().catch(() => ({}));
+
+            if (response.status === 401) {
+                localStorage.removeItem("adminToken");
+                localStorage.removeItem("admin");
+                window.location.href = "../admin-login.html";
+                throw new Error("Your login expired. Please log in again.");
+            }
+
+            if (!response.ok) {
+                throw new Error(data.message || "Journey request failed.");
+            }
+
+            return data;
+        }
+
+        function renderEntry(entry, index) {
+            const row = document.createElement("article");
+            row.className = "journey-admin-row";
+
+            const year = document.createElement("strong");
+            year.className = "journey-admin-year";
+            year.textContent = entry.year;
+
+            const details = document.createElement("div");
+            details.className = "journey-admin-details";
+            const title = document.createElement("h3");
+            title.textContent = entry.title;
+            const description = document.createElement("p");
+            description.textContent = entry.description;
+            details.append(title, description);
+
+            const actions = document.createElement("div");
+            actions.className = "journey-row-actions";
+
+            const editButton = document.createElement("button");
+            editButton.type = "button";
+            editButton.className = "journey-button edit";
+            editButton.textContent = "Edit";
+            editButton.addEventListener("click", () => editEntry(index));
+
+            const deleteButton = document.createElement("button");
+            deleteButton.type = "button";
+            deleteButton.className = "journey-button remove";
+            deleteButton.textContent = "Delete";
+            deleteButton.addEventListener("click", () => deleteEntry(index));
+
+            actions.append(editButton, deleteButton);
+            row.append(year, details, actions);
+            return row;
+        }
+
+        function renderEntries() {
+            journeyEntries.replaceChildren();
+            document.getElementById("journeyCount").textContent =
+                `${entries.length} milestone${entries.length === 1 ? "" : "s"}`;
+
+            if (!entries.length) {
+                const empty = document.createElement("p");
+                empty.className = "catalogue-empty";
+                empty.textContent = "No milestones yet. Add your first milestone.";
+                journeyEntries.appendChild(empty);
+                return;
+            }
+
+            journeyEntries.replaceChildren(
+                ...entries.map((entry, index) => renderEntry(entry, index))
+            );
+        }
+
+        function resetForm() {
+            form.reset();
+            editingIndex = -1;
+            formTitle.textContent = "Add milestone";
+            saveButton.textContent = "Save milestone";
+            formPanel.hidden = true;
+        }
+
+        function editEntry(index) {
+            const entry = entries[index];
+            if (!entry) {
+                return;
+            }
+
+            editingIndex = index;
+            form.elements.year.value = entry.year;
+            form.elements.title.value = entry.title;
+            form.elements.description.value = entry.description;
+            formTitle.textContent = "Edit milestone";
+            saveButton.textContent = "Save changes";
+            formPanel.hidden = false;
+            window.scrollTo({ top: 0, behavior: "smooth" });
+            form.elements.year.focus();
+        }
+
+        async function saveEntries(updatedEntries, successMessage) {
+            const result = await apiRequest(API, {
+                method: "PUT",
+                body: JSON.stringify({
+                    entries: updatedEntries.map(({ year, title, description }) => ({
+                        year,
+                        title,
+                        description
+                    }))
+                })
+            });
+
+            entries = result.entries;
+            renderEntries();
+            setStatus(successMessage);
+        }
+
+        async function loadJourney() {
+            setStatus("Loading journey milestones...");
+
+            try {
+                const loadedEntries = await apiRequest(API);
+
+                if (!Array.isArray(loadedEntries)) {
+                    throw new Error("Journey response is invalid.");
+                }
+
+                entries = loadedEntries;
+                renderEntries();
+                setStatus(entries.length
+                    ? "Journey milestones loaded."
+                    : "No milestones yet. Add one to begin.");
+            } catch (error) {
+                setStatus(error.message);
+            }
+        }
+
+        form.addEventListener("submit", async event => {
+            event.preventDefault();
+
+            saveButton.disabled = true;
+
+            try {
+                const entry = {
+                    year: form.elements.year.value.trim(),
+                    title: form.elements.title.value.trim(),
+                    description: form.elements.description.value.trim()
+                };
+                const updatedEntries = entries.slice();
+
+                if (editingIndex === -1) {
+                    updatedEntries.push(entry);
+                } else {
+                    updatedEntries[editingIndex] = entry;
+                }
+
+                setStatus("Saving journey milestone...");
+                await saveEntries(
+                    updatedEntries,
+                    editingIndex === -1
+                        ? "Milestone added successfully."
+                        : "Milestone updated successfully."
+                );
+                resetForm();
+            } catch (error) {
+                setStatus(error.message);
+            } finally {
+                saveButton.disabled = false;
+            }
+        });
+
+        document.getElementById("addEntryButton").addEventListener(
+            "click", () => {
+                resetForm();
+                formPanel.hidden = false;
+                window.scrollTo({ top: 0, behavior: "smooth" });
+                form.elements.year.focus();
+            }
+        );
+
+        document.getElementById("cancelFormButton").addEventListener(
+            "click", resetForm
+        );
+
+        async function deleteEntry(index) {
+            const entry = entries[index];
+            if (!entry || !window.confirm(`Delete the ${entry.year} "${entry.title}" milestone?`)) {
+                return;
+            }
+
+            setStatus("Deleting journey milestone...");
+            try {
+                const updatedEntries = entries.filter(
+                    (_item, entryIndex) => entryIndex !== index
+                );
+                await saveEntries(updatedEntries, "Milestone deleted successfully.");
+                if (!formPanel.hidden) {
+                    resetForm();
+                }
+            } catch (error) {
+                setStatus(error.message);
+            }
+        }
+
+        document.getElementById("logoutButton").addEventListener("click", () => {
+            localStorage.removeItem("adminToken");
+            localStorage.removeItem("admin");
+            window.location.href = "../admin-login.html";
+        });
+
+        if (!token) {
+            window.location.href = "../admin-login.html";
+        } else {
+            loadJourney();
+        }
+    </script>
+</body>
+
+</html>

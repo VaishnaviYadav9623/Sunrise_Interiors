@@ -345,7 +345,7 @@
         </h2>
 
 
-        <div class="timeline">
+        <div class="timeline" id="journeyTimeline">
 
             <!-- 2014 -->
 
@@ -694,6 +694,58 @@
     <script src="js/script.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/premium.js"></script>
+    <script>
+        async function loadJourney() {
+            const timeline = document.getElementById("journeyTimeline");
+
+            try {
+                const response = await fetch(
+                    "http://localhost:5000/api/journey"
+                );
+
+                if (!response.ok) {
+                    throw new Error("Could not load journey milestones.");
+                }
+
+                const entries = await response.json();
+
+                if (!Array.isArray(entries)) {
+                    throw new Error("Journey response is invalid.");
+                }
+
+                timeline.replaceChildren();
+
+                entries.forEach(entry => {
+                    const item = document.createElement("div");
+                    item.className = "timeline-item";
+
+                    const year = document.createElement("div");
+                    year.className = "timeline-year";
+                    year.textContent = entry.year;
+
+                    const dot = document.createElement("div");
+                    dot.className = "timeline-dot";
+
+                    const content = document.createElement("div");
+                    content.className = "timeline-content";
+
+                    const title = document.createElement("h3");
+                    title.textContent = entry.title;
+
+                    const description = document.createElement("p");
+                    description.textContent = entry.description;
+
+                    content.append(title, description);
+                    item.append(year, dot, content);
+                    timeline.appendChild(item);
+                });
+            } catch (error) {
+                console.error("Journey loading error:", error);
+            }
+        }
+
+        loadJourney();
+    </script>
 
 </body>
 
