@@ -751,92 +751,102 @@
 
     /* ================= QUOTE CARD ================= */
 
-    function renderQuote(quote) {
+    
+function renderQuote(quote) {
+    const card = document.createElement("article");
+    card.className = "enquiry-card";
 
-        const card =
-            document.createElement("article");
+    const images = Array.isArray(quote.referenceImages)
+        ? quote.referenceImages
+        : [];
 
-        card.className =
-            "enquiry-card";
+    const imageHTML = images.length
+        ? `
+            <div style="margin-top:16px;">
+                <strong>Client Reference Photos</strong>
 
+                <div style="
+                    display:flex;
+                    flex-wrap:wrap;
+                    gap:10px;
+                    margin-top:10px;
+                ">
+                    ${images.map(imagePath => {
+                        const imageURL =
+                            "http://localhost:5000" + imagePath;
 
-        card.innerHTML = `
-
-            <div class="enquiry-details">
-
-                <h2>
-                    ${escapeHTML(quote.name)}
-                </h2>
-
-                <p class="enquiry-subject">
-
-                    ${escapeHTML(
-                        quote.service ||
-                        "Quotation request"
-                    )}
-
-                </p>
-
-                <p class="enquiry-body">
-
-                    ${quote.budget
-                        ? "Budget: " +
-                          escapeHTML(
-                              quote.budget
-                          ) +
-                          "<br><br>"
-                        : ""}
-
-                    ${quote.message
-                        ? escapeHTML(
-                            quote.message
-                          )
-                        : "No project details provided."}
-
-                </p>
-
-                <p class="enquiry-contact-line">
-
-                    ${escapeHTML(quote.email)}
-
-                    ${quote.phone
-                        ? " · " +
-                          escapeHTML(quote.phone)
-                        : ""}
-
-                </p>
-
+                        return `
+                            <a
+                                href="${escapeHTML(imageURL)}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                title="Open reference photo"
+                            >
+                                <img
+                                    src="${escapeHTML(imageURL)}"
+                                    alt="Client reference photo"
+                                    loading="lazy"
+                                    style="
+                                        width:120px;
+                                        height:100px;
+                                        object-fit:cover;
+                                        border-radius:8px;
+                                        border:1px solid #ddd;
+                                    "
+                                >
+                            </a>
+                        `;
+                    }).join("")}
+                </div>
             </div>
-
-
-            <div class="enquiry-actions">
-
-                <time>
-                    ${formatDate(
-                        quote.createdAt
-                    )}
-                </time>
-
-                ${createStatusSelect(
-                    quote._id,
-                    quote.status,
-                    [
-                        "pending",
-                        "reviewed",
-                        "approved",
-                        "rejected"
-                    ],
-                    "quotes"
-                )}
-
-            </div>
-
+        `
+        : `
+            <p style="margin-top:12px;color:#777;">
+                No reference photos uploaded.
+            </p>
         `;
 
+    card.innerHTML = `
+        <div class="enquiry-details">
+            <h2>${escapeHTML(quote.name)}</h2>
 
-        enquiriesPanel.appendChild(card);
+            <p class="enquiry-subject">
+                ${escapeHTML(quote.service || "Quotation request")}
+            </p>
 
-    }
+            <p class="enquiry-body">
+                ${quote.budget
+                    ? "Budget: " + escapeHTML(quote.budget) + "<br><br>"
+                    : ""}
+                ${quote.message
+                    ? escapeHTML(quote.message)
+                    : "No project details provided."}
+            </p>
+
+            <p class="enquiry-contact-line">
+                ${escapeHTML(quote.email)}
+                ${quote.phone
+                    ? " · " + escapeHTML(quote.phone)
+                    : ""}
+            </p>
+
+            ${imageHTML}
+        </div>
+
+        <div class="enquiry-actions">
+            <time>${formatDate(quote.createdAt)}</time>
+
+            ${createStatusSelect(
+                quote._id,
+                quote.status,
+                ["pending", "reviewed", "approved", "rejected"],
+                "quotes"
+            )}
+        </div>
+    `;
+
+    enquiriesPanel.appendChild(card);
+}
 
 
     /* ================= STATUS SELECT ================= */

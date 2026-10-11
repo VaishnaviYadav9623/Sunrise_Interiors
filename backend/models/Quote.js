@@ -1,3 +1,4 @@
+
 const mongoose = require("mongoose");
 
 const quoteSchema = new mongoose.Schema(
@@ -33,6 +34,11 @@ const quoteSchema = new mongoose.Schema(
         message: {
             type: String,
             default: ""
+        },
+
+        referenceImages: {
+            type: [String],
+            default: []
         },
 
         status: {

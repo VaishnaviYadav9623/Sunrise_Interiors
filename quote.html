@@ -100,16 +100,62 @@
 						</label>
 					</div>
 
-					<label>
-						Estimated budget
-						<select name="budget">
-							<option value="">Choose a budget range</option>
-							<option value="Under ₹5 lakh">Under ₹5 lakh</option>
-							<option value="₹5 - ₹10 lakh">₹5 - ₹10 lakh</option>
-							<option value="₹10 - ₹20 lakh">₹10 - ₹20 lakh</option>
-							<option value="₹20 lakh and above">₹20 lakh and above</option>
-						</select>
-					</label>
+					
+<label>
+    Estimated budget
+
+    <select name="budgetRange" id="budgetRange">
+        <option value="">Choose a budget range</option>
+        <option value="Under ₹5 lakh">Under ₹5 lakh</option>
+        <option value="₹5 - ₹10 lakh">₹5 - ₹10 lakh</option>
+        <option value="₹10 - ₹20 lakh">₹10 - ₹20 lakh</option>
+        <option value="₹20 lakh and above">₹20 lakh and above</option>
+    </select>
+</label>
+
+<label>
+    Or enter your budget manually
+
+    <input
+        type="text"
+        name="customBudget"
+        id="customBudget"
+        placeholder="e.g. ₹7.5 lakh or ₹8,00,000"
+    >
+
+    <small>
+        If you enter a custom budget, it will be used instead of the selected range.
+    </small>
+</label>
+
+
+<label for="referenceImages">
+    Reference Photos
+
+    <p>
+        Upload photos of designs, rooms or ideas you want us
+        to use as inspiration for your project.
+    </p>
+
+    <input
+        type="file"
+        id="referenceImages"
+        name="referenceImages"
+        accept="image/jpeg,image/png,image/webp,image/gif"
+        multiple
+    >
+
+    <small>
+        Upload up to 5 photos, maximum 5 MB each.
+        JPG, PNG, WEBP and GIF supported.
+    </small>
+</label>
+
+<div
+    id="imagePreview"
+    style="display:flex;flex-wrap:wrap;gap:12px;margin:12px 0;"
+></div>
+
 
 					<label>
 						Project details
@@ -136,33 +182,108 @@
 	</footer>
 
 	<script>
-		const quoteForm = document.getElementById("quoteForm");
-		const quoteStatus = document.getElementById("quoteStatus");
+		
+const quoteForm = document.getElementById("quoteForm");
+const quoteStatus = document.getElementById("quoteStatus");
 
-		quoteForm.addEventListener("submit", async (event) => {
-			event.preventDefault();
-			quoteStatus.textContent = "Submitting your request...";
-			quoteStatus.className = "quote-status";
+const imageInput = document.getElementById("referenceImages");
+const imagePreview = document.getElementById("imagePreview");
 
-			try {
-				const response = await fetch("http://localhost:5000/api/quotes", {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify(Object.fromEntries(new FormData(quoteForm)))
-				});
+imageInput.addEventListener("change", () => {
+    imagePreview.innerHTML = "";
 
-				if (!response.ok) {
-					throw new Error("Unable to submit quote request");
-				}
+    const files = Array.from(imageInput.files);
 
-				quoteForm.reset();
-				quoteStatus.textContent = "Request received. We will contact you shortly.";
-				quoteStatus.classList.add("success");
-			} catch (error) {
-				quoteStatus.textContent = "We could not submit your request. Please try again or call us directly.";
-				quoteStatus.classList.add("error");
-			}
-		});
+    if (files.length > 5) {
+        imageInput.value = "";
+        quoteStatus.textContent = "Please select a maximum of 5 photos.";
+        quoteStatus.className = "quote-status error";
+        return;
+    }
+
+    for (const file of files) {
+        if (!file.type.startsWith("image/") ||
+            !["image/jpeg", "image/png", "image/webp", "image/gif"].includes(file.type)) {
+            imageInput.value = "";
+            imagePreview.innerHTML = "";
+            quoteStatus.textContent = "Please select JPG, PNG, WEBP or GIF images only.";
+            quoteStatus.className = "quote-status error";
+            return;
+        }
+
+        if (file.size > 5 * 1024 * 1024) {
+            imageInput.value = "";
+            imagePreview.innerHTML = "";
+            quoteStatus.textContent = "Each photo must be 5 MB or smaller.";
+            quoteStatus.className = "quote-status error";
+            return;
+        }
+    }
+
+    files.forEach(file => {
+        const reader = new FileReader();
+
+        reader.onload = event => {
+            const img = document.createElement("img");
+            img.src = event.target.result;
+            img.alt = "Selected reference photo";
+            img.style.width = "110px";
+            img.style.height = "90px";
+            img.style.objectFit = "cover";
+            img.style.borderRadius = "8px";
+            imagePreview.appendChild(img);
+        };
+
+        reader.readAsDataURL(file);
+    });
+});
+
+quoteForm.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    quoteStatus.textContent = "Submitting your request...";
+    quoteStatus.className = "quote-status";
+
+    const formData = new FormData(quoteForm);
+
+    const selectedBudget = formData.get("budgetRange") || "";
+    const customBudget = (formData.get("customBudget") || "").trim();
+
+    // Use the manually entered budget when provided.
+    formData.set("budget", customBudget || selectedBudget);
+
+    // These fields are used only by the frontend.
+    formData.delete("budgetRange");
+    formData.delete("customBudget");
+
+    try {
+        const response = await fetch("http://localhost:5000/api/quotes", {
+            method: "POST",
+            body: formData
+        });
+
+        const result = await response.json();
+
+        if (!response.ok) {
+            throw new Error(result.message || "Unable to submit quote.");
+        }
+
+        quoteForm.reset();
+        imagePreview.innerHTML = "";
+
+        quoteStatus.textContent =
+            "Your quote request and reference photos have been submitted successfully.";
+
+        quoteStatus.classList.add("success");
+
+    } catch (error) {
+        quoteStatus.textContent =
+            error.message || "Unable to submit your request. Please try again.";
+
+        quoteStatus.classList.add("error");
+    }
+});
+
 	</script>
 
 	<script src="js/auth.js"></script>
