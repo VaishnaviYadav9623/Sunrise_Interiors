@@ -197,6 +197,8 @@
                         </div>
                         <span id="productsCountLabel" class="catalogue-count"></span>
                     </div>
+                    <label class="catalogue-search-label" for="productSearch">Search products</label>
+                    <input id="productSearch" class="catalogue-search-input" type="search" placeholder="Name, category, or description" autocomplete="off">
                     <div id="productsList" class="catalogue-list"></div>
                 </section>
             </main>
@@ -214,6 +216,9 @@
         const productImageFileName = document.getElementById("productImageFileName");
         let selectedImageData = "";
         let selectedImageRead = Promise.resolve();
+        let allProducts = [];
+
+        document.getElementById("productSearch").addEventListener("input", renderProducts);
 
         if (!token) {
             window.location.href = "../admin-login.html";
@@ -294,20 +299,37 @@
                     throw new Error(products.message || "Failed to load products");
                 }
 
+                allProducts = products;
                 document.getElementById("productsSummary").textContent =
                     `${products.length} product${products.length === 1 ? "" : "s"} stored in MongoDB.`;
-                document.getElementById("productsCountLabel").textContent =
-                    `${products.length} item${products.length === 1 ? "" : "s"}`;
-
-                if (!products.length) {
-                    productsList.innerHTML = "<p class='catalogue-empty'>No products found. Add your first product above.</p>";
-                    return;
-                }
-
-                productsList.replaceChildren(...products.map(renderProduct));
+                renderProducts();
             } catch (error) {
                 productsList.innerHTML = `<p class="catalogue-empty">${error.message}</p>`;
             }
+        }
+
+        function renderProducts() {
+            const productsList = document.getElementById("productsList");
+            const searchTerm = document.getElementById("productSearch").value.trim().toLowerCase();
+            const filteredProducts = allProducts.filter((product) =>
+                [product.name, product.category, product.description]
+                    .some((value) => (value || "").toLowerCase().includes(searchTerm))
+            );
+
+            document.getElementById("productsCountLabel").textContent =
+                `${filteredProducts.length} of ${allProducts.length} item${allProducts.length === 1 ? "" : "s"}`;
+
+            if (!allProducts.length) {
+                productsList.innerHTML = "<p class='catalogue-empty'>No products found. Add your first product above.</p>";
+                return;
+            }
+
+            if (!filteredProducts.length) {
+                productsList.innerHTML = "<p class='catalogue-empty'>No products match your search.</p>";
+                return;
+            }
+
+            productsList.replaceChildren(...filteredProducts.map(renderProduct));
         }
 
         async function loadCategories() {

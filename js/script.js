@@ -659,6 +659,21 @@ const noProducts =
 const productCount =
     document.getElementById("productCount");
 
+const productSearch =
+    document.getElementById("productSearch");
+
+let activeProductCategory = "all";
+
+if (productSearch) {
+
+    productSearch.addEventListener("input", function() {
+
+        displayProducts(activeProductCategory);
+
+    });
+
+}
+
 
 /* =====================================================
    LOAD PRODUCTS FROM DATABASE
@@ -1003,6 +1018,8 @@ function displayProducts(category = "all") {
     productsGrid.innerHTML = "";
 
 
+    activeProductCategory = category;
+
     let filteredProducts;
 
 
@@ -1039,6 +1056,26 @@ function displayProducts(category = "all") {
     }
 
 
+    const searchTerm = productSearch
+        ? productSearch.value.trim().toLowerCase()
+        : "";
+
+    if (searchTerm) {
+
+        filteredProducts = filteredProducts.filter(function(product) {
+
+            return [product.name, product.category, product.description]
+                .some(function(value) {
+
+                    return (value || "").toLowerCase().includes(searchTerm);
+
+                });
+
+        });
+
+    }
+
+
     /*
      * PRODUCT COUNT
      */
@@ -1058,6 +1095,13 @@ function displayProducts(category = "all") {
     if (filteredProducts.length === 0) {
 
         if (noProducts) {
+
+            noProducts.querySelector("h2").textContent =
+                searchTerm ? "No matching products" : "No products found";
+
+            noProducts.querySelector("p").textContent = searchTerm
+                ? "Try another name, category, or description."
+                : "We are adding more products to this category soon.";
 
             noProducts.style.display =
                 "block";
