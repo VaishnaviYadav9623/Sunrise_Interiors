@@ -156,6 +156,16 @@ Sunrise_Interiors/
 | GET | `/api/contacts` | Admin views messages |
 | PUT | `/api/contacts/:id` | Update message status |
 
+### ✉️ Admin email replies
+
+| Method | Endpoint | Description |
+|---------|----------|-------------|
+| POST | `/api/replies` | Send an authenticated admin reply to a contact, consultation, or quotation request |
+
+Configure email on the backend before sending replies. Gmail is the default provider (`smtp.gmail.com`, port `465`, secure connection); the only required Gmail settings are `SMTP_USER` (the studio's Gmail address) and `SMTP_PASS` (a Google app password, not the regular account password). Google requires 2-Step Verification to create an app password. Add these values to the existing `backend/.env` without replacing its database or JWT settings, then restart the backend. `SMTP_FROM` is optional and must be an authorized sender for the account. Keep `backend/.env` private and never add credentials to source control.
+
+The reply API accepts `type` (`contacts`, `consultations`, or `quotes`), `requestId`, `subject`, and `message`. It always loads the recipient address from the selected database record. Contact enquiries are marked `replied` only after the SMTP server accepts the message; consultation and quotation statuses are unchanged.
+
 ---
 
 ## 📊 Dashboard API

@@ -123,6 +123,111 @@
         font-size: 14px;
     }
 
+    .reply-email-button,
+    .reply-form-button {
+        border: 1px solid #a47851;
+        background: #a47851;
+        color: #fff;
+        padding: 10px 16px;
+        font: inherit;
+        cursor: pointer;
+        transition: background 0.2s ease, border-color 0.2s ease;
+    }
+
+    .reply-email-button:hover,
+    .reply-form-button:hover {
+        border-color: #805a3b;
+        background: #805a3b;
+    }
+
+    .reply-email-button:disabled,
+    .reply-form-button:disabled {
+        cursor: not-allowed;
+        opacity: 0.65;
+    }
+
+    .reply-dialog {
+        width: min(560px, calc(100% - 32px));
+        max-height: calc(100% - 32px);
+        padding: 0;
+        border: 1px solid #ded3c6;
+        background: #fffdfa;
+        color: #302a25;
+        box-shadow: 0 24px 70px rgba(27, 21, 16, 0.25);
+    }
+
+    .reply-dialog::backdrop {
+        background: rgba(26, 22, 18, 0.58);
+    }
+
+    .reply-dialog-content {
+        display: grid;
+        gap: 16px;
+        padding: 28px;
+    }
+
+    .reply-dialog h2 {
+        margin: 0;
+    }
+
+    .reply-dialog-intro {
+        margin: -8px 0 0;
+        color: #776f67;
+        line-height: 1.5;
+    }
+
+    .reply-dialog label {
+        display: grid;
+        gap: 7px;
+        font-weight: 600;
+    }
+
+    .reply-dialog input,
+    .reply-dialog textarea {
+        width: 100%;
+        border: 1px solid #ded3c6;
+        background: #fff;
+        color: #302a25;
+        padding: 11px 12px;
+        font: inherit;
+    }
+
+    .reply-dialog textarea {
+        min-height: 170px;
+        resize: vertical;
+    }
+
+    .reply-dialog input:focus,
+    .reply-dialog textarea:focus {
+        outline: 2px solid #a47851;
+        outline-offset: 1px;
+    }
+
+    .reply-feedback {
+        min-height: 1.5em;
+        margin: 0;
+        color: #9a3d32;
+    }
+
+    .reply-feedback.success {
+        color: #3d7a47;
+    }
+
+    .reply-dialog-actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: 10px;
+    }
+
+    .reply-cancel-button {
+        border: 1px solid #ded3c6;
+        background: transparent;
+        color: #302a25;
+        padding: 10px 16px;
+        font: inherit;
+        cursor: pointer;
+    }
+
     .enquiry-status {
         padding: 8px 12px;
         border: 1px solid #ccc;
@@ -190,6 +295,10 @@
 
         .enquiry-actions {
             align-items: flex-start;
+        }
+
+        .reply-dialog-content {
+            padding: 22px;
         }
     }
 </style>
@@ -432,6 +541,61 @@
                 aria-live="polite">
             </section>
 
+            <dialog
+                id="replyDialog"
+                class="reply-dialog"
+                aria-labelledby="replyDialogTitle">
+                <form id="replyForm" class="reply-dialog-content">
+                    <h2 id="replyDialogTitle">Reply by Email</h2>
+                    <p class="reply-dialog-intro">
+                        Your reply will be sent to the email address saved with this request.
+                    </p>
+
+                    <label>
+                        To
+                        <input id="replyRecipient" type="email" readonly>
+                    </label>
+
+                    <label>
+                        Subject
+                        <input
+                            id="replySubject"
+                            type="text"
+                            maxlength="200"
+                            required>
+                    </label>
+
+                    <label>
+                        Message
+                        <textarea
+                            id="replyMessage"
+                            maxlength="10000"
+                            required></textarea>
+                    </label>
+
+                    <p
+                        id="replyFeedback"
+                        class="reply-feedback"
+                        role="status"
+                        aria-live="polite"></p>
+
+                    <div class="reply-dialog-actions">
+                        <button
+                            id="replyCancelButton"
+                            class="reply-cancel-button"
+                            type="button">
+                            Cancel
+                        </button>
+                        <button
+                            id="replySendButton"
+                            class="reply-form-button"
+                            type="submit">
+                            Send
+                        </button>
+                    </div>
+                </form>
+            </dialog>
+
         </main>
 
     </div>
@@ -469,12 +633,38 @@
     const backButton =
         document.getElementById("backButton");
 
+    const replyDialog =
+        document.getElementById("replyDialog");
+
+    const replyForm =
+        document.getElementById("replyForm");
+
+    const replyRecipient =
+        document.getElementById("replyRecipient");
+
+    const replySubject =
+        document.getElementById("replySubject");
+
+    const replyMessage =
+        document.getElementById("replyMessage");
+
+    const replyFeedback =
+        document.getElementById("replyFeedback");
+
+    const replySendButton =
+        document.getElementById("replySendButton");
+
+    const replyCancelButton =
+        document.getElementById("replyCancelButton");
+
 
     let contacts = [];
     let consultations = [];
     let quotes = [];
 
     let currentType = "contacts";
+    let activeReply = null;
+    let sendingReply = false;
 
 
     /* ================= LOGIN ================= */
@@ -614,6 +804,12 @@
                     "contacts"
                 )}
 
+                ${createReplyButton(
+                    contact,
+                    "contacts",
+                    contact.subject || "Website enquiry"
+                )}
+
             </div>
 
         `;
@@ -739,6 +935,12 @@
                     "consultations"
                 )}
 
+                ${createReplyButton(
+                    consultation,
+                    "consultations",
+                    consultation.service || "Consultation request"
+                )}
+
             </div>
 
         `;
@@ -842,11 +1044,31 @@ function renderQuote(quote) {
                 ["pending", "reviewed", "approved", "rejected"],
                 "quotes"
             )}
+
+            ${createReplyButton(
+                quote,
+                "quotes",
+                quote.service || "Quotation request"
+            )}
         </div>
     `;
 
     enquiriesPanel.appendChild(card);
 }
+
+    function createReplyButton(request, type, subject) {
+        return `
+            <button
+                class="reply-email-button"
+                type="button"
+                data-reply-id="${escapeHTML(request._id)}"
+                data-reply-type="${type}"
+                data-reply-email="${escapeHTML(request.email)}"
+                data-reply-subject="${escapeHTML(subject)}">
+                Reply by Email
+            </button>
+        `;
+    }
 
 
     /* ================= STATUS SELECT ================= */
@@ -969,6 +1191,111 @@ function renderQuote(quote) {
         attachStatusListeners();
 
     }
+
+    enquiriesPanel.addEventListener("click", function(event) {
+        const button = event.target.closest(".reply-email-button");
+
+        if (!button || !enquiriesPanel.contains(button)) {
+            return;
+        }
+
+        activeReply = {
+            id: button.dataset.replyId,
+            type: button.dataset.replyType
+        };
+        replyRecipient.value = button.dataset.replyEmail;
+        replySubject.value = `Re: ${button.dataset.replySubject}`;
+        replyMessage.value = "";
+        replyFeedback.textContent = "";
+        replyFeedback.classList.remove("success");
+        replySendButton.disabled = false;
+        replySendButton.textContent = "Send";
+        replyCancelButton.disabled = false;
+        replyCancelButton.textContent = "Cancel";
+        replyDialog.showModal();
+        replySubject.focus();
+    });
+
+    replyCancelButton.addEventListener("click", function() {
+        if (!sendingReply) {
+            replyDialog.close();
+        }
+    });
+
+    replyDialog.addEventListener("cancel", function(event) {
+        if (sendingReply) {
+            event.preventDefault();
+        }
+    });
+
+    replyForm.addEventListener("submit", async function(event) {
+        event.preventDefault();
+
+        if (sendingReply || !activeReply || !replyForm.reportValidity()) {
+            return;
+        }
+
+        sendingReply = true;
+        replySendButton.disabled = true;
+        replyCancelButton.disabled = true;
+        replySendButton.textContent = "Sending…";
+        replyFeedback.textContent = "";
+        replyFeedback.classList.remove("success");
+
+        try {
+            const response = await fetch(`${API_URL}/api/replies`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    type: activeReply.type,
+                    requestId: activeReply.id,
+                    subject: replySubject.value,
+                    message: replyMessage.value
+                })
+            });
+            const result = await response.json();
+
+            if (response.status === 401) {
+                localStorage.removeItem("adminToken");
+                localStorage.removeItem("admin");
+                window.location.href = "../admin-login.html";
+                return;
+            }
+
+            if (!response.ok) {
+                throw new Error(result.message || "Unable to send the reply email.");
+            }
+
+            replyFeedback.textContent =
+                result.warning || `Email sent successfully to ${replyRecipient.value}.`;
+            replyFeedback.classList.add("success");
+            replySendButton.textContent = "Sent";
+            replyCancelButton.textContent = "Close";
+
+            if (activeReply.type === "contacts") {
+                if (!result.warning) {
+                    const contact = contacts.find(
+                        item => item._id === activeReply.id
+                    );
+                    if (contact) {
+                        contact.status = "replied";
+                    }
+                }
+                displayCurrentType();
+            }
+        } catch (error) {
+            replyFeedback.textContent = error.message;
+            replySendButton.disabled = false;
+            replySendButton.textContent = "Send";
+            replyCancelButton.disabled = false;
+        } finally {
+            sendingReply = false;
+            replyCancelButton.disabled = false;
+        }
+    });
 
 
     /* ================= SWITCH TYPE ================= */
