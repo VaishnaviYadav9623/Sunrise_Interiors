@@ -127,6 +127,16 @@
             gap: 22px;
         }
 
+        .admin-projects .catalogue-search-label {
+            text-align: center;
+        }
+
+        .admin-projects .catalogue-search-input {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
         .project-card {
             overflow: hidden;
             border: 1px solid #e5e5e5;
@@ -306,6 +316,8 @@
             </div>
             <span id="projectsCountLabel" class="catalogue-count"></span>
         </div>
+        <label class="catalogue-search-label" for="projectSearch">Search projects</label>
+        <input id="projectSearch" class="catalogue-search-input" type="search" placeholder="Title, category, location, or description" autocomplete="off">
         <div id="projectsList" class="projects-list" aria-live="polite"></div>
             </main>
         </div>
@@ -321,6 +333,10 @@
         const projectsList = document.getElementById("projectsList");
         const saveButton = document.getElementById("saveButton");
         const cancelButton = document.getElementById("cancelButton");
+        const projectSearch = document.getElementById("projectSearch");
+        let allProjects = [];
+
+        projectSearch.addEventListener("input", renderProjects);
 
         if (!token) {
             window.location.href = "../admin-login.html";
@@ -368,58 +384,75 @@
                     throw new Error(projects.message || "Failed to load projects");
                 }
 
-                if (!projects.length) {
-                    projectsList.innerHTML = "<p>No projects found. Add the first one above.</p>";
-                    document.getElementById("projectsCountLabel").textContent = "0 projects";
-                    return;
-                }
-
-                document.getElementById("projectsCountLabel").textContent =
-                    `${projects.length} project${projects.length === 1 ? "" : "s"}`;
-                projectsList.replaceChildren();
-
-                projects.forEach((project) => {
-                    const card = document.createElement("article");
-                    card.className = "project-card";
-
-                    const imageSlot = document.createElement("div");
-                    imageSlot.className = "gallery-project-image";
-
-                    if (project.image) {
-                        const image = document.createElement("img");
-                        image.src = project.image;
-                        image.alt = project.title || "Project image";
-                        image.loading = "lazy";
-                        imageSlot.appendChild(image);
-                    }
-
-                    card.appendChild(imageSlot);
-
-                    const content = document.createElement("div");
-                    content.className = "project-card-content";
-                    content.innerHTML = `
-                        <h3></h3>
-                        <p><strong>Category:</strong> <span class="project-category"></span></p>
-                        <p><strong>Location:</strong> <span class="project-location"></span></p>
-                        <p class="project-description"></p>
-                        <div class="project-actions">
-                            <button class="edit-button" type="button">Edit</button>
-                            <button class="delete-button" type="button">Delete</button>
-                        </div>
-                    `;
-
-                    content.querySelector("h3").textContent = project.title;
-                    content.querySelector(".project-category").textContent = project.category;
-                    content.querySelector(".project-location").textContent = project.location || "Not specified";
-                    content.querySelector(".project-description").textContent = project.description || "No description";
-                    content.querySelector(".edit-button").addEventListener("click", () => editProject(project));
-                    content.querySelector(".delete-button").addEventListener("click", () => deleteProject(project._id));
-                    card.appendChild(content);
-                    projectsList.appendChild(card);
-                });
+                allProjects = projects;
+                renderProjects();
             } catch (error) {
                 projectsList.innerHTML = `<p>${error.message}</p>`;
             }
+        }
+
+        function renderProjects() {
+            const searchTerm = projectSearch.value.trim().toLowerCase();
+            const filteredProjects = allProjects.filter((project) =>
+                [project.title, project.category, project.location, project.description]
+                    .some((value) => (value || "").toLowerCase().includes(searchTerm))
+            );
+
+            document.getElementById("projectsCountLabel").textContent =
+                `${filteredProjects.length} of ${allProjects.length} project${allProjects.length === 1 ? "" : "s"}`;
+
+            if (!allProjects.length) {
+                projectsList.innerHTML = "<p>No projects found. Add the first one above.</p>";
+                document.getElementById("projectsCountLabel").textContent = "0 projects";
+                return;
+            }
+
+            if (!filteredProjects.length) {
+                projectsList.innerHTML = "<p>No projects match your search.</p>";
+                return;
+            }
+
+            projectsList.replaceChildren();
+
+            filteredProjects.forEach((project) => {
+                const card = document.createElement("article");
+                card.className = "project-card";
+
+                const imageSlot = document.createElement("div");
+                imageSlot.className = "gallery-project-image";
+
+                if (project.image) {
+                    const image = document.createElement("img");
+                    image.src = project.image;
+                    image.alt = project.title || "Project image";
+                    image.loading = "lazy";
+                    imageSlot.appendChild(image);
+                }
+
+                card.appendChild(imageSlot);
+
+                const content = document.createElement("div");
+                content.className = "project-card-content";
+                content.innerHTML = `
+                    <h3></h3>
+                    <p><strong>Category:</strong> <span class="project-category"></span></p>
+                    <p><strong>Location:</strong> <span class="project-location"></span></p>
+                    <p class="project-description"></p>
+                    <div class="project-actions">
+                        <button class="edit-button" type="button">Edit</button>
+                        <button class="delete-button" type="button">Delete</button>
+                    </div>
+                `;
+
+                content.querySelector("h3").textContent = project.title;
+                content.querySelector(".project-category").textContent = project.category;
+                content.querySelector(".project-location").textContent = project.location || "Not specified";
+                content.querySelector(".project-description").textContent = project.description || "No description";
+                content.querySelector(".edit-button").addEventListener("click", () => editProject(project));
+                content.querySelector(".delete-button").addEventListener("click", () => deleteProject(project._id));
+                card.appendChild(content);
+                projectsList.appendChild(card);
+            });
         }
 
         async function deleteProject(id) {

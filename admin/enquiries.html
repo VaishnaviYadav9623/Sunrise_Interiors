@@ -65,6 +65,16 @@
         color: #666;
     }
 
+    .enquiries-content .catalogue-search-label {
+        text-align: center;
+    }
+
+    .enquiries-content .catalogue-search-input {
+        display: block;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
     .enquiries-panel {
         margin-top: 20px;
     }
@@ -523,6 +533,13 @@
 
             </div>
 
+            <label class="catalogue-search-label" for="enquirySearch">Search by name</label>
+            <input
+                id="enquirySearch"
+                class="catalogue-search-input"
+                type="search"
+                placeholder="Enter a client's name"
+                autocomplete="off">
 
             <p
                 id="enquiriesMessage"
@@ -617,6 +634,9 @@
     const enquiriesPanel =
         document.getElementById("enquiriesPanel");
 
+    const enquirySearch =
+        document.getElementById("enquirySearch");
+
 
     const enquiriesMessage =
         document.getElementById("enquiriesMessage");
@@ -665,6 +685,11 @@
     let currentType = "contacts";
     let activeReply = null;
     let sendingReply = false;
+
+    enquirySearch.addEventListener(
+        "input",
+        displayCurrentType
+    );
 
 
     /* ================= LOGIN ================= */
@@ -1145,12 +1170,40 @@ function renderQuote(quote) {
 
         }
 
-
         if (!data.length) {
 
             renderEmptyState(
                 currentType
             );
+
+            return;
+
+        }
+
+        const searchTerm =
+            enquirySearch.value.trim().toLowerCase();
+
+        if (searchTerm) {
+
+            data = data.filter(
+                function(item) {
+                    return (item.name || "")
+                        .toLowerCase()
+                        .includes(searchTerm);
+                }
+            );
+
+        }
+
+        if (!data.length) {
+
+            enquiriesPanel.className =
+                "enquiries-panel enquiries-empty-state";
+
+            enquiriesPanel.innerHTML = `
+                <h2>No matching enquiries</h2>
+                <p>Try searching for a different name.</p>
+            `;
 
             return;
 
