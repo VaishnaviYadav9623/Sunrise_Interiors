@@ -13,6 +13,7 @@ const projectRoutes = require("./routes/projects");
 const consultationRoutes = require("./routes/consultations");
 const quoteRoutes = require("./routes/quotes");
 const contactRoutes = require("./routes/contacts");
+const emailReplyRoutes = require("./routes/emailReplies");
 const dashboardRoutes = require("./routes/dashboard");
 const reviewRoutes = require("./routes/reviews");
 const journeyRoutes = require("./routes/journey");
@@ -68,6 +69,7 @@ app.use("/api/projects", projectRoutes);
 app.use("/api/consultations", consultationRoutes);
 app.use("/api/quotes", quoteRoutes);
 app.use("/api/contacts", contactRoutes);
+app.use("/api/replies", emailReplyRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 
 // 404 route
